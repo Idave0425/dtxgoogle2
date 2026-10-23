@@ -1,0 +1,48 @@
+[
+  {
+    "id": "desc:4dda7acf49c0",
+    "evidence": "identical-description",
+    "evidenceValue": "screwm3x05mmthread8mmlongpanheadphillipssteelzincplated",
+    "gpns": [
+      "07016397",
+      "1094168",
+      "1106617",
+      "1249277"
+    ],
+    "conflictingKeys": []
+  },
+  {
+    "id": "desc:d6aa908bea00",
+    "evidence": "identical-description",
+    "evidenceValue": "washerm332mmid7mmod05mmthkflatstainlesssteelpassivated",
+    "gpns": [
+      "15000001",
+      "15000010"
+    ],
+    "conflictingKeys": []
+  },
+  {
+    "id": "mpn:0100-1-002-01",
+    "evidence": "shared-mpn",
+    "evidenceValue": "0100-1-002-01",
+    "gpns": [
+      "07016397",
+      "07035144",
+      "07090971",
+      "1017592-01"
+    ],
+    "conflictingKeys": []
+  },
+  {
+    "id": "mpn:90317A111",
+    "evidence": "shared-mpn",
+    "evidenceValue": "90317A111",
+    "gpns": [
+      "07070024",
+      "07082586"
+    ],
+    "conflictingKeys": [
+      "material"
+    ]
+  }
+]

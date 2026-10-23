@@ -1,0 +1,649 @@
+{
+  "family": [
+    {
+      "canonical": "screw",
+      "label": "screw",
+      "rawVariants": [
+        "screw"
+      ],
+      "count": 21
+    },
+    {
+      "canonical": "washer",
+      "label": "washer",
+      "rawVariants": [
+        "washer"
+      ],
+      "count": 7
+    },
+    {
+      "canonical": "bolt",
+      "label": "bolt",
+      "rawVariants": [
+        "bolt"
+      ],
+      "count": 2
+    },
+    {
+      "canonical": "cage nut",
+      "label": "cage nut",
+      "rawVariants": [
+        "cage nut"
+      ],
+      "count": 2
+    },
+    {
+      "canonical": "nut",
+      "label": "nut",
+      "rawVariants": [
+        "nut"
+      ],
+      "count": 2
+    },
+    {
+      "canonical": "standoff",
+      "label": "standoff",
+      "rawVariants": [
+        "standoff"
+      ],
+      "count": 1
+    }
+  ],
+  "headType": [
+    {
+      "canonical": "pan",
+      "label": "pan head",
+      "rawVariants": [
+        "PANHEAD",
+        "PAN HEAD",
+        "PAN-HEAD",
+        "PAN HD",
+        "PHCS",
+        "PHP"
+      ],
+      "count": 15
+    },
+    {
+      "canonical": "hex",
+      "label": "hex head",
+      "rawVariants": [
+        "HEX HEAD"
+      ],
+      "count": 3
+    },
+    {
+      "canonical": "socket",
+      "label": "socket head",
+      "rawVariants": [
+        "SOCKET HEAD",
+        "SHCS"
+      ],
+      "count": 2
+    },
+    {
+      "canonical": "button",
+      "label": "button head",
+      "rawVariants": [
+        "BUTTON HEAD",
+        "BHCS"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "flat",
+      "label": "flat head",
+      "rawVariants": [
+        "FLATHEAD",
+        "FLAT HEAD",
+        "FLAT HD",
+        "FHCS"
+      ],
+      "count": 1
+    }
+  ],
+  "driveType": [
+    {
+      "canonical": "phillips",
+      "label": "phillips",
+      "rawVariants": [
+        "PHILLIPS",
+        "PHILIPS",
+        "PHIL",
+        "PH1",
+        "PH2"
+      ],
+      "count": 16
+    },
+    {
+      "canonical": "hex",
+      "label": "hex",
+      "rawVariants": [
+        "HEX SOCKET",
+        "HEX"
+      ],
+      "count": 7
+    },
+    {
+      "canonical": "torx",
+      "label": "torx",
+      "rawVariants": [
+        "TORX",
+        "T10",
+        "T20",
+        "T25",
+        "T30"
+      ],
+      "count": 1
+    }
+  ],
+  "material": [
+    {
+      "canonical": "steel",
+      "label": "steel",
+      "rawVariants": [
+        "STEEL",
+        "STL"
+      ],
+      "count": 23
+    },
+    {
+      "canonical": "stainless steel",
+      "label": "stainless steel",
+      "rawVariants": [
+        "STAINLESS STEEL",
+        "STAINLESS",
+        "SST",
+        "SS",
+        "18-8",
+        "A4",
+        "A2",
+        "316",
+        "304",
+        "410",
+        "303"
+      ],
+      "count": 8
+    },
+    {
+      "canonical": "alloy steel",
+      "label": "alloy steel",
+      "rawVariants": [
+        "ALLOY STEEL"
+      ],
+      "count": 2
+    },
+    {
+      "canonical": "brass",
+      "label": "brass",
+      "rawVariants": [
+        "BRASS"
+      ],
+      "count": 1
+    }
+  ],
+  "finish": [
+    {
+      "canonical": "zinc plated",
+      "label": "zinc plated",
+      "rawVariants": [
+        "ZINC PLATED",
+        "CLEAR ZINC",
+        "ZINC",
+        "ZC",
+        "ZP",
+        "ZN"
+      ],
+      "count": 23
+    },
+    {
+      "canonical": "passivated",
+      "label": "passivated",
+      "rawVariants": [
+        "PASSIVATED"
+      ],
+      "count": 4
+    },
+    {
+      "canonical": "black oxide",
+      "label": "black oxide",
+      "rawVariants": [
+        "BLACK OXIDE"
+      ],
+      "count": 3
+    },
+    {
+      "canonical": "plain",
+      "label": "plain",
+      "rawVariants": [
+        "PLAIN"
+      ],
+      "count": 2
+    },
+    {
+      "canonical": "nickel",
+      "label": "nickel",
+      "rawVariants": [
+        "NICKEL"
+      ],
+      "count": 1
+    }
+  ],
+  "integralWasher": [
+    {
+      "canonical": "split lock",
+      "label": "split lock",
+      "rawVariants": [
+        "SPRING LOCK",
+        "LOCK WASHER",
+        "SPLIT LOCK"
+      ],
+      "count": 2
+    },
+    {
+      "canonical": "captive/SEM",
+      "label": "captive/SEM",
+      "rawVariants": [
+        "W/ WASHER",
+        "WITH WASHER",
+        "W/WASHER",
+        "CAPTIVE",
+        "SEMS",
+        "SEM"
+      ],
+      "count": 1
+    }
+  ],
+  "washerStyle": [
+    {
+      "canonical": "flat washer",
+      "label": "flat washer",
+      "rawVariants": [
+        "FLAT WASHER"
+      ],
+      "count": 4
+    },
+    {
+      "canonical": "external tooth",
+      "label": "external tooth",
+      "rawVariants": [
+        "EXTERNAL-TOOTH",
+        "EXTERNAL TOOTH",
+        "EXT-TOOTH",
+        "EXT TOOTH"
+      ],
+      "count": 2
+    },
+    {
+      "canonical": "split lock",
+      "label": "split lock",
+      "rawVariants": [
+        "SPRING LOCK",
+        "LOCK WASHER",
+        "SPLIT LOCK"
+      ],
+      "count": 1
+    }
+  ],
+  "fitsScrewSize": [
+    {
+      "canonical": "M3",
+      "label": "M3",
+      "rawVariants": [
+        "M3"
+      ],
+      "count": 3
+    },
+    {
+      "canonical": "#10",
+      "label": "#10",
+      "rawVariants": [
+        "#10"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "1/4in",
+      "label": "1/4in",
+      "rawVariants": [
+        "1/4in"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "M4",
+      "label": "M4",
+      "rawVariants": [
+        "M4"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "M5",
+      "label": "M5",
+      "rawVariants": [
+        "M5"
+      ],
+      "count": 1
+    }
+  ],
+  "threadSize": [
+    {
+      "canonical": "M3",
+      "label": "M3",
+      "rawVariants": [
+        "M3"
+      ],
+      "count": 21
+    },
+    {
+      "canonical": "M5",
+      "label": "M5",
+      "rawVariants": [
+        "M5"
+      ],
+      "count": 5
+    },
+    {
+      "canonical": "M4",
+      "label": "M4",
+      "rawVariants": [
+        "M4"
+      ],
+      "count": 2
+    },
+    {
+      "canonical": "10-32",
+      "label": "10-32",
+      "rawVariants": [
+        "10-32"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "8-32",
+      "label": "8-32",
+      "rawVariants": [
+        "8-32"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "M10",
+      "label": "M10",
+      "rawVariants": [
+        "M10"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "M6",
+      "label": "M6",
+      "rawVariants": [
+        "M6"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "M8",
+      "label": "M8",
+      "rawVariants": [
+        "M8"
+      ],
+      "count": 1
+    }
+  ],
+  "threadPitchMm": [
+    {
+      "canonical": "0.5",
+      "label": "0.5 mm",
+      "rawVariants": [
+        "0.5"
+      ],
+      "count": 15
+    },
+    {
+      "canonical": "0.7",
+      "label": "0.7 mm",
+      "rawVariants": [
+        "0.7"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "0.8",
+      "label": "0.8 mm",
+      "rawVariants": [
+        "0.8"
+      ],
+      "count": 4
+    },
+    {
+      "canonical": "1",
+      "label": "1 mm",
+      "rawVariants": [
+        "1"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "1.25",
+      "label": "1.25 mm",
+      "rawVariants": [
+        "1.25"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "1.5",
+      "label": "1.5 mm",
+      "rawVariants": [
+        "1.5"
+      ],
+      "count": 1
+    }
+  ],
+  "lengthMm": [
+    {
+      "canonical": "0.5",
+      "label": "0.5 mm",
+      "rawVariants": [
+        "M3x0.5mm"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "0.8",
+      "label": "0.8 mm",
+      "rawVariants": [
+        "M5x0.8mm"
+      ],
+      "count": 2
+    },
+    {
+      "canonical": "1",
+      "label": "1 mm",
+      "rawVariants": [
+        "M6x1.0mm"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "6",
+      "label": "6 mm",
+      "rawVariants": [
+        "6mm Long"
+      ],
+      "count": 2
+    },
+    {
+      "canonical": "8",
+      "label": "8 mm",
+      "rawVariants": [
+        "8mm Long",
+        "M3x8mm",
+        "M3 x 8MM",
+        "M3 x 0.5 x 8 mm",
+        "8mm"
+      ],
+      "count": 11
+    },
+    {
+      "canonical": "9.525",
+      "label": "9.525 mm",
+      "rawVariants": [
+        "3/8in Long"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "10",
+      "label": "10 mm",
+      "rawVariants": [
+        "10mm Long"
+      ],
+      "count": 3
+    },
+    {
+      "canonical": "12",
+      "label": "12 mm",
+      "rawVariants": [
+        "12mm Long"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "12.7",
+      "label": "12.7 mm",
+      "rawVariants": [
+        "1/2in Long"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "16",
+      "label": "16 mm",
+      "rawVariants": [
+        "16mm Long"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "20",
+      "label": "20 mm",
+      "rawVariants": [
+        "20mm Long"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "25",
+      "label": "25 mm",
+      "rawVariants": [
+        "25mm Long"
+      ],
+      "count": 2
+    },
+    {
+      "canonical": "40",
+      "label": "40 mm",
+      "rawVariants": [
+        "40mm Long"
+      ],
+      "count": 1
+    }
+  ],
+  "innerDiameterMm": [
+    {
+      "canonical": "3.2",
+      "label": "3.2 mm",
+      "rawVariants": [
+        "3.2mm ID"
+      ],
+      "count": 2
+    },
+    {
+      "canonical": "4.3",
+      "label": "4.3 mm",
+      "rawVariants": [
+        "4.3mm ID"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "5.5",
+      "label": "5.5 mm",
+      "rawVariants": [
+        "5.5mm ID"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "7.137",
+      "label": "7.137 mm",
+      "rawVariants": [
+        "0.281in ID"
+      ],
+      "count": 1
+    }
+  ],
+  "outerDiameterMm": [
+    {
+      "canonical": "7",
+      "label": "7 mm",
+      "rawVariants": [
+        "7mm OD"
+      ],
+      "count": 2
+    },
+    {
+      "canonical": "9",
+      "label": "9 mm",
+      "rawVariants": [
+        "9mm OD"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "10",
+      "label": "10 mm",
+      "rawVariants": [
+        "10mm OD"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "15.875",
+      "label": "15.875 mm",
+      "rawVariants": [
+        "0.625in OD"
+      ],
+      "count": 1
+    }
+  ],
+  "thicknessMm": [
+    {
+      "canonical": "0.5",
+      "label": "0.5 mm",
+      "rawVariants": [
+        "0.5mm THK"
+      ],
+      "count": 2
+    },
+    {
+      "canonical": "0.8",
+      "label": "0.8 mm",
+      "rawVariants": [
+        "0.8mm THK"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "1",
+      "label": "1 mm",
+      "rawVariants": [
+        "1mm THK"
+      ],
+      "count": 1
+    }
+  ]
+}
