@@ -1,0 +1,1643 @@
+[
+  {
+    "gpn": "04100607",
+    "gpnKey": "4100607",
+    "description": "Washer, External Tooth, #10, Steel, Zinc Plated",
+    "partType": "Fastener-Washers",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 33
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "McMaster-Carr",
+        "partNumber": "91114A011"
+      }
+    ],
+    "attributes": {
+      "family": "washer",
+      "threadSize": null,
+      "threadPitchMm": null,
+      "lengthMm": null,
+      "headType": null,
+      "driveType": null,
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": "#10",
+      "washerStyle": "external tooth",
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {},
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "07001144",
+    "gpnKey": "7001144",
+    "description": "Screw, 10-32 Thread, 1/2in Long, Pan Head, Phillips, Steel, Black Oxide",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "End of Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 21
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Keystone",
+        "partNumber": "KS-10-32-050-BLK"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "10-32",
+      "threadPitchMm": null,
+      "lengthMm": 12.7,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "black oxide",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "10-32",
+      "lengthMm": "1/2in Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "07004435",
+    "gpnKey": "7004435",
+    "description": "Screw, 8-32 Thread, 3/8in Long, Pan Head, Phillips, Steel, Zinc Plated",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 22
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Fastenal",
+        "partNumber": "FA-832038PP"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "8-32",
+      "threadPitchMm": null,
+      "lengthMm": 9.525,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "8-32",
+      "lengthMm": "3/8in Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "07015054",
+    "gpnKey": "7015054",
+    "description": "Cage Nut, M6x1.0mm Thread, Steel, Zinc Plated (100 pieces)",
+    "partType": "Fastener-Nut",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 27
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Hoffman",
+        "partNumber": "HM-CN-M6-100"
+      }
+    ],
+    "attributes": {
+      "family": "cage nut",
+      "threadSize": "M6",
+      "threadPitchMm": 1,
+      "lengthMm": 1,
+      "headType": null,
+      "driveType": null,
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M6",
+      "threadPitchMm": "1",
+      "lengthMm": "M6x1.0mm"
+    },
+    "packaging": {
+      "quantity": 100,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "07016397",
+    "gpnKey": "7016397",
+    "description": "Screw, M3x0.5mm Thread, 8mm Long, Pan Head, Phillips, Steel, Zinc Plated",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 7
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Supermicro",
+        "partNumber": "0100-1-002-01"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 8,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "8mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "07022596",
+    "gpnKey": "7022596",
+    "description": "Screw, M3x8mm, Pan Philips Head, With External-Tooth Lock Washer",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 3
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Bossard",
+        "partNumber": "BN82428"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": null,
+      "lengthMm": 8,
+      "headType": null,
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": null,
+      "materialGrade": null,
+      "finish": null,
+      "gradeClass": null,
+      "integralWasher": "split lock",
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "lengthMm": "M3x8mm"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "07035144",
+    "gpnKey": "7035144",
+    "description": "HDW, SCREW PANHEAD PHILLIPS M3 x 8MM, STEEL, ZINC",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 8
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Dell",
+        "partNumber": "0100-1-002-01"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": null,
+      "lengthMm": 8,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "lengthMm": "M3 x 8MM"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "07052664",
+    "gpnKey": "7052664",
+    "description": "Screw, M3x0.5mm Thread, Pan Head, Phillips, Zinc-Plated Steel, 8mm Long",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 2
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "McMaster-Carr",
+        "partNumber": "91290A113"
+      },
+      {
+        "name": "Fastenal",
+        "partNumber": "M30500800PP"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 8,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "8mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "07070024",
+    "gpnKey": "7070024",
+    "description": "Screw, M3x0.5mm Thread, 8mm Long, Pan Head, Phillips, Steel, Zinc",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 11
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "McMaster-Carr",
+        "partNumber": "90317A111"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 8,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "8mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "07082586",
+    "gpnKey": "7082586",
+    "description": "Screw, M3x0.5mm Thread, 8mm Long, Pan Head, Phillips, Stainless Steel, Zinc Plated, 316",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 12
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "McMaster-Carr",
+        "partNumber": "90317A111"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 8,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "stainless steel",
+      "materialGrade": "316",
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "8mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "07090971",
+    "gpnKey": "7090971",
+    "description": "Screw, PHP, M3 x 0.5 x 8 mm, Steel, Zinc, Rack Mount Hardware",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Preliminary",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 9
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "HPE",
+        "partNumber": "0100-1-002-01"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 8,
+      "headType": "pan",
+      "driveType": null,
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "M3 x 0.5 x 8 mm"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "1017592-01",
+    "gpnKey": "1017592-01",
+    "description": "Mounting Screw, M3 Pan Head Philips, 8mm, Zinc Steel, RoHS",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 10
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Lenovo",
+        "partNumber": "0100-1-002-01"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": null,
+      "lengthMm": 8,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "lengthMm": "8mm"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "1094168",
+    "gpnKey": "1094168",
+    "description": "Screw, M3x0.5mm Thread, 8mm Long, Pan Head, Phillips, Steel, Zinc Plated",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Preliminary",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 6
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Fastenal",
+        "partNumber": "FA-M30508PP"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 8,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "8mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "1106617",
+    "gpnKey": "1106617",
+    "description": "Screw, M3x0.5mm Thread, 8mm Long, Pan Head, Phillips, Steel, Zinc Plated",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 4
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Keystone",
+        "partNumber": "KS-M3-8-PP"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 8,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "8mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "12345001",
+    "gpnKey": "12345001",
+    "description": "Screw, M3x0.5mm Thread, 6mm Long, Flat Head, Phillips, Stainless Steel, Passivated",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 13
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Bossard",
+        "partNumber": "BN82600"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 6,
+      "headType": "flat",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "stainless steel",
+      "materialGrade": null,
+      "finish": "passivated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "6mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "12345002",
+    "gpnKey": "12345002",
+    "description": "Screw, M3x0.5mm Thread, 12mm Long, Button Head, Torx T10, Alloy Steel, Black Oxide",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 14
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "McMaster-Carr",
+        "partNumber": "92949A116"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 12,
+      "headType": "button",
+      "driveType": "torx",
+      "driveSize": "T10",
+      "material": "alloy steel",
+      "materialGrade": null,
+      "finish": "black oxide",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "12mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "12345003",
+    "gpnKey": "12345003",
+    "description": "Screw, M3x0.5mm Thread, 10mm Long, Socket Head, Hex, Stainless Steel 18-8, Plain",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 15
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "McMaster-Carr",
+        "partNumber": "92196A113"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 10,
+      "headType": "socket",
+      "driveType": "hex",
+      "driveSize": null,
+      "material": "stainless steel",
+      "materialGrade": "18-8",
+      "finish": "plain",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "10mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "12345004",
+    "gpnKey": "12345004",
+    "description": "Screw, M3x0.5mm Thread, 20mm Long, Pan Head, Phillips, Steel, Zinc Plated, Split Lock Washer",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Prototype",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 16
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Keystone",
+        "partNumber": "KS-M3-20-PPZ"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 20,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": "split lock",
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "20mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "12345005",
+    "gpnKey": "12345005",
+    "description": "Screw, Captive, Pan Head Phillips, M3x0.5mm Thread, 6mm Long, Steel, Zinc Plated, W/Washer",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 17
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "PEM",
+        "partNumber": "PFS2-M3-6-ZI"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 6,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": "captive/SEM",
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "6mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "12345010",
+    "gpnKey": "12345010",
+    "description": "Screw, M4x0.7mm Thread, 10mm Long, Socket Head, Hex, Alloy Steel, Black Oxide",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 18
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "McMaster-Carr",
+        "partNumber": "91290A194"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M4",
+      "threadPitchMm": 0.7,
+      "lengthMm": 10,
+      "headType": "socket",
+      "driveType": "hex",
+      "driveSize": null,
+      "material": "alloy steel",
+      "materialGrade": null,
+      "finish": "black oxide",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M4",
+      "threadPitchMm": "0.7",
+      "lengthMm": "10mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "12345011",
+    "gpnKey": "12345011",
+    "description": "Screw, M5x0.8mm Thread, 16mm Long, Pan Head, Phillips, Steel, Zinc Plated",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 19
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Bossard",
+        "partNumber": "BN82600-M5-16"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M5",
+      "threadPitchMm": 0.8,
+      "lengthMm": 16,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M5",
+      "threadPitchMm": "0.8",
+      "lengthMm": "16mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "12345012",
+    "gpnKey": "12345012",
+    "description": "Screw, M5x0.8mm Thread, 25mm Long, Hex Head, Hex, Steel, Zinc Plated",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Preliminary",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 20
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Fastenal",
+        "partNumber": "FA-M50825HH"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M5",
+      "threadPitchMm": 0.8,
+      "lengthMm": 25,
+      "headType": "hex",
+      "driveType": "hex",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M5",
+      "threadPitchMm": "0.8",
+      "lengthMm": "25mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "1249277",
+    "gpnKey": "1249277",
+    "description": "Screw, M3x0.5mm Thread, 8mm Long, Pan Head, Phillips, Steel, Zinc Plated",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Prototype",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 5
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Würth",
+        "partNumber": "WU-304-M3-8"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 8,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "8mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "13000001",
+    "gpnKey": "13000001",
+    "description": "Bolt, Hex Head, M8x1.25mm Thread, 25mm Long, Steel, Zinc Plated, Grade 8.8",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 23
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Würth",
+        "partNumber": "WU-M8-25-G88"
+      }
+    ],
+    "attributes": {
+      "family": "bolt",
+      "threadSize": "M8",
+      "threadPitchMm": 1.25,
+      "lengthMm": 25,
+      "headType": "hex",
+      "driveType": "hex",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": "grade 8.8",
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M8",
+      "threadPitchMm": "1.25",
+      "lengthMm": "25mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "13000002",
+    "gpnKey": "13000002",
+    "description": "Bolt, Hex Head, M10x1.5mm Thread, 40mm Long, Stainless Steel, Plain",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 24
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "McMaster-Carr",
+        "partNumber": "92240A630"
+      }
+    ],
+    "attributes": {
+      "family": "bolt",
+      "threadSize": "M10",
+      "threadPitchMm": 1.5,
+      "lengthMm": 40,
+      "headType": "hex",
+      "driveType": "hex",
+      "driveSize": null,
+      "material": "stainless steel",
+      "materialGrade": null,
+      "finish": "plain",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M10",
+      "threadPitchMm": "1.5",
+      "lengthMm": "40mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "14000001",
+    "gpnKey": "14000001",
+    "description": "Nut, Hex, M3x0.5mm Thread, Steel, Zinc Plated",
+    "partType": "Fastener-Nut",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 25
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Fastenal",
+        "partNumber": "FA-HN-M3-ZI"
+      }
+    ],
+    "attributes": {
+      "family": "nut",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 0.5,
+      "headType": null,
+      "driveType": "hex",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "M3x0.5mm"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "14000002",
+    "gpnKey": "14000002",
+    "description": "Nut, Hex, M5x0.8mm Thread, Stainless Steel 316, Passivated",
+    "partType": "Fastener-Nut",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 26
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "McMaster-Carr",
+        "partNumber": "91828A251"
+      }
+    ],
+    "attributes": {
+      "family": "nut",
+      "threadSize": "M5",
+      "threadPitchMm": 0.8,
+      "lengthMm": 0.8,
+      "headType": null,
+      "driveType": "hex",
+      "driveSize": null,
+      "material": "stainless steel",
+      "materialGrade": "316",
+      "finish": "passivated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M5",
+      "threadPitchMm": "0.8",
+      "lengthMm": "M5x0.8mm"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "14000003",
+    "gpnKey": "14000003",
+    "description": "Cage Nut, M5x0.8mm Thread, Steel, Zinc Plated",
+    "partType": "Fastener-Nut",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 28
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Hoffman",
+        "partNumber": "HM-CN-M5"
+      }
+    ],
+    "attributes": {
+      "family": "cage nut",
+      "threadSize": "M5",
+      "threadPitchMm": 0.8,
+      "lengthMm": 0.8,
+      "headType": null,
+      "driveType": null,
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M5",
+      "threadPitchMm": "0.8",
+      "lengthMm": "M5x0.8mm"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "15000001",
+    "gpnKey": "15000001",
+    "description": "Washer, M3, 3.2mm ID, 7mm OD, 0.5mm THK, Flat, Stainless Steel, Passivated",
+    "partType": "Fastener-Washers",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 29
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "McMaster-Carr",
+        "partNumber": "91116A110"
+      }
+    ],
+    "attributes": {
+      "family": "washer",
+      "threadSize": "M3",
+      "threadPitchMm": null,
+      "lengthMm": null,
+      "headType": null,
+      "driveType": null,
+      "driveSize": null,
+      "material": "stainless steel",
+      "materialGrade": null,
+      "finish": "passivated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": "M3",
+      "washerStyle": "flat washer",
+      "innerDiameterMm": 3.2,
+      "outerDiameterMm": 7,
+      "thicknessMm": 0.5
+    },
+    "raw": {
+      "threadSize": "M3",
+      "innerDiameterMm": "3.2mm ID",
+      "outerDiameterMm": "7mm OD",
+      "thicknessMm": "0.5mm THK"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "15000002",
+    "gpnKey": "15000002",
+    "description": "Washer, M3, Split Lock, Steel, Zinc Plated",
+    "partType": "Fastener-Washers",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 30
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Fastenal",
+        "partNumber": "FA-SLW-M3-ZI"
+      }
+    ],
+    "attributes": {
+      "family": "washer",
+      "threadSize": "M3",
+      "threadPitchMm": null,
+      "lengthMm": null,
+      "headType": null,
+      "driveType": null,
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": "M3",
+      "washerStyle": "split lock",
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "15000003",
+    "gpnKey": "15000003",
+    "description": "Washer, M4, 4.3mm ID, 9mm OD, 0.8mm THK, External Tooth, Stainless Steel",
+    "partType": "Fastener-Washers",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 31
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Bossard",
+        "partNumber": "BN14-M4"
+      }
+    ],
+    "attributes": {
+      "family": "washer",
+      "threadSize": "M4",
+      "threadPitchMm": null,
+      "lengthMm": null,
+      "headType": null,
+      "driveType": null,
+      "driveSize": null,
+      "material": "stainless steel",
+      "materialGrade": null,
+      "finish": null,
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": "M4",
+      "washerStyle": "external tooth",
+      "innerDiameterMm": 4.3,
+      "outerDiameterMm": 9,
+      "thicknessMm": 0.8
+    },
+    "raw": {
+      "threadSize": "M4",
+      "innerDiameterMm": "4.3mm ID",
+      "outerDiameterMm": "9mm OD",
+      "thicknessMm": "0.8mm THK"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "15000004",
+    "gpnKey": "15000004",
+    "description": "Washer, M5, 5.5mm ID, 10mm OD, 1mm THK, Flat, Steel, Zinc Plated",
+    "partType": "Fastener-Washers",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 32
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Keystone",
+        "partNumber": "KS-FW-M5-ZI"
+      }
+    ],
+    "attributes": {
+      "family": "washer",
+      "threadSize": "M5",
+      "threadPitchMm": null,
+      "lengthMm": null,
+      "headType": null,
+      "driveType": null,
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": "M5",
+      "washerStyle": "flat washer",
+      "innerDiameterMm": 5.5,
+      "outerDiameterMm": 10,
+      "thicknessMm": 1
+    },
+    "raw": {
+      "threadSize": "M5",
+      "innerDiameterMm": "5.5mm ID",
+      "outerDiameterMm": "10mm OD",
+      "thicknessMm": "1mm THK"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "15000005",
+    "gpnKey": "15000005",
+    "description": "Washer, Flat, 1/4in Screw Size, 0.281in ID, 0.625in OD, Steel, Zinc Plated",
+    "partType": "Fastener-Washers",
+    "phase": "End of Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 34
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Fastenal",
+        "partNumber": "FA-FW-14-ZI"
+      }
+    ],
+    "attributes": {
+      "family": "washer",
+      "threadSize": null,
+      "threadPitchMm": null,
+      "lengthMm": null,
+      "headType": null,
+      "driveType": null,
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": "1/4in",
+      "washerStyle": "flat washer",
+      "innerDiameterMm": 7.137,
+      "outerDiameterMm": 15.875,
+      "thicknessMm": null
+    },
+    "raw": {
+      "innerDiameterMm": "0.281in ID",
+      "outerDiameterMm": "0.625in OD"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "15000010",
+    "gpnKey": "15000010",
+    "description": "Washer, M3, 3.2mm ID, 7mm OD, 0.5mm THK, Flat, Stainless Steel, Passivated",
+    "partType": "Fastener-Washers",
+    "phase": "Prototype",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 35
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Bossard",
+        "partNumber": "BN730-M3"
+      }
+    ],
+    "attributes": {
+      "family": "washer",
+      "threadSize": "M3",
+      "threadPitchMm": null,
+      "lengthMm": null,
+      "headType": null,
+      "driveType": null,
+      "driveSize": null,
+      "material": "stainless steel",
+      "materialGrade": null,
+      "finish": "passivated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": "M3",
+      "washerStyle": "flat washer",
+      "innerDiameterMm": 3.2,
+      "outerDiameterMm": 7,
+      "thicknessMm": 0.5
+    },
+    "raw": {
+      "threadSize": "M3",
+      "innerDiameterMm": "3.2mm ID",
+      "outerDiameterMm": "7mm OD",
+      "thicknessMm": "0.5mm THK"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "16000001",
+    "gpnKey": "16000001",
+    "description": "Standoff, M3x0.5mm Thread, 10mm Long, Brass, Nickel Plated",
+    "partType": "Fastener-Standoff",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 36
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Keystone",
+        "partNumber": "KS-SO-M3-10-NI"
+      }
+    ],
+    "attributes": {
+      "family": "standoff",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 10,
+      "headType": null,
+      "driveType": null,
+      "driveSize": null,
+      "material": "brass",
+      "materialGrade": null,
+      "finish": "nickel",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "10mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  }
+]
