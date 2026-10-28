@@ -30,7 +30,10 @@ export function Sidebar() {
       screen: 'compare',
       label: 'Compare',
       icon: 'columns',
-      count: state.compareGpns.length ? `${state.compareGpns.length} of 2` : undefined,
+      count:
+        state.compareGpns.length && (nResults ?? 0) >= 2
+          ? `${state.compareGpns.length} of 2`
+          : undefined,
       disabled: state.compareGpns.length !== 2,
     },
     {

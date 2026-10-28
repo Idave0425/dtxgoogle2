@@ -81,6 +81,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     (action: Action) => {
       if (action.type === 'RUN_SEARCH') {
         runSearch();
+        dispatchRaw(action);
         return;
       }
       if (action.type === 'OPEN_SCREEN') {

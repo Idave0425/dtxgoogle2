@@ -68,6 +68,19 @@ describe('volume demo', () => {
     expect(within(row).getByText('Close match')).toBeTruthy();
   });
 
+  it('hides compare controls when only one part fits', () => {
+    setup();
+    pick('screw');
+    pick('M5');
+    pick('0.8');
+    pick('25');
+    skipRestAndSearch();
+
+    expect(rowOrder()).toEqual(['12345012']);
+    expect(screen.queryByRole('button', { name: /Compare \d of 2/ })).toBeNull();
+    expect(document.querySelector('.row-result input[type="checkbox"]')).toBeNull();
+  });
+
   it('a typed pitch with no exact match still dead-ends in strict mode', () => {
     setup();
     pick('screw');

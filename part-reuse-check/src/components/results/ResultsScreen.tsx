@@ -36,6 +36,8 @@ export function ResultsScreen() {
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
 
   const rows = tab === 'all' ? fits : all.filter((r) => r.verdict === tab);
+  // Compare needs two parts that fit; with fewer there is nothing to compare.
+  const canCompare = fits.length >= 2;
   const count = (t: Tab) => (t === 'all' ? fits.length : all.filter((r) => r.verdict === t).length);
   const maxVolume = selectMaxVolume(all.map((r) => r.part.gpn));
 
@@ -121,14 +123,16 @@ export function ResultsScreen() {
         ))}
         <span className="tabs-end">
           <span className="muted small">Sorted by match, lifecycle, volume</span>
-          <button
-            className="btn btn-secondary btn-sm"
-            disabled={state.compareGpns.length !== 2}
-            onClick={() => dispatch({ type: 'OPEN_SCREEN', screen: 'compare' })}
-            title={state.compareGpns.length !== 2 ? 'Tick two rows to compare them' : undefined}
-          >
-            Compare {state.compareGpns.length} of 2
-          </button>
+          {canCompare ? (
+            <button
+              className="btn btn-secondary btn-sm"
+              disabled={state.compareGpns.length !== 2}
+              onClick={() => dispatch({ type: 'OPEN_SCREEN', screen: 'compare' })}
+              title={state.compareGpns.length !== 2 ? 'Tick two rows to compare them' : undefined}
+            >
+              Compare {state.compareGpns.length} of 2
+            </button>
+          ) : null}
         </span>
       </div>
 
@@ -137,6 +141,7 @@ export function ResultsScreen() {
         columns={columns}
         clustersByGpn={clustersByGpn}
         preferred={preferred}
+        selectable={canCompare}
         maxVolume={maxVolume}
         expanded={expanded}
         onToggle={(gpn) =>

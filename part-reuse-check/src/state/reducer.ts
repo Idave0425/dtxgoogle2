@@ -98,9 +98,10 @@ export function reducer(state: AppState, action: Action): AppState {
       };
     }
     case 'RUN_SEARCH': {
-      // results computation lives in selectors; here we just flip the screen.
-      // the Provider computes and stores results when this action fires.
-      return state;
+      // The Provider computes and stores results when this action fires.
+      // A new result set starts with an empty compare selection, so picks from
+      // an earlier search can't linger as "1 of 2".
+      return { ...state, compareGpns: [] };
     }
     case 'TOGGLE_COMPARE': {
       const list = state.compareGpns.includes(action.gpn)

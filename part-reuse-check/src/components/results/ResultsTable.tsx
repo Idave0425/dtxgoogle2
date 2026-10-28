@@ -29,6 +29,8 @@ interface Props {
   expanded: Set<string>;
   onToggle: (gpn: string) => void;
   emptyText: string;
+  /** Show the compare checkboxes (only when at least two parts fit). */
+  selectable: boolean;
 }
 
 function formatValue(v: string | number | null, unit?: 'mm'): string {
@@ -46,6 +48,7 @@ export function ResultsTable({
   expanded,
   onToggle,
   emptyText,
+  selectable,
 }: Props) {
   const state = useAppState();
   const dispatch = useDispatch();
@@ -76,14 +79,14 @@ export function ResultsTable({
     );
   }
 
-  const totalCols = 6 + columns.length;
+  const totalCols = (selectable ? 6 : 5) + columns.length;
 
   return (
     <div className="table-wrap panel">
       <table className="results-table">
         <thead>
           <tr>
-            <th className="col-check" aria-label="Compare" />
+            {selectable ? <th className="col-check" aria-label="Compare" /> : null}
             <th className="col-gpn">GPN</th>
             <th className="col-verdict">Verdict</th>
             <th className="col-phase">Lifecycle</th>
@@ -126,6 +129,7 @@ export function ResultsTable({
                     onToggle(gpn);
                   }}
                 >
+{selectable ? (
                   <td className="col-check">
                     <input
                       type="checkbox"
@@ -134,6 +138,7 @@ export function ResultsTable({
                       onChange={() => dispatch({ type: 'TOGGLE_COMPARE', gpn })}
                     />
                   </td>
+                  ) : null}
                   <td className="col-gpn">
                     <button
                       className="gpn-btn mono"
