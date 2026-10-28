@@ -45,8 +45,10 @@ connected to our data?" correctly.
 
 ## Data
 
-- `data/set01.csv` + `data/set02.csv` — the October 2026 GPN snapshot
-  (two sheets, ~15k rows).
+- `data/set01.csv` + `data/set02.csv`: the October 2026 GPN snapshot
+  (two sheets, ~15k rows). **Not in the repo.** It is Google's data, so it is
+  git-ignored; get it from the team's Drive and place it in `data/` to run
+  `npm run build:fixture:real`. The committed fixture is the 38-part demo set.
 - `scripts/build-fixture.ts` reads both, merges by normalised GPN, filters to
   fastener part types (Bolts & Screws, Nut, Washers), runs the extractor, and
   writes:

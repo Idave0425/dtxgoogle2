@@ -5,3 +5,7 @@ dist
 .vite
 coverage
 .taste-skill/inspect/
+
+# Google's GPN export stays local; never commit it.
+data/*.csv
+data/*.xlsx
