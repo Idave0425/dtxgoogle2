@@ -33,7 +33,6 @@
   --pill-negative-bg: #ffedea; --pill-negative-ink: #831c1e;
   --pill-warning-bg: #fffbeb; --pill-warning-ink: #92400e;
   --pill-neutral-bg: #eeeeee; --pill-neutral-ink: #3d3d3d;
-  --notice-border: #fde68a;
 
   --radius-card: 8px;
   --radius-control: 6px;
@@ -122,12 +121,6 @@ th.num, td.num { text-align: right; }
 }
 .step-item.is-skipped .step-value { color: var(--faint); }
 
-.sidebar-foot { margin-top: auto; padding-top: 16px; }
-.notice {
-  padding: 10px 12px; border: 1px solid var(--notice-border); border-radius: var(--radius-control);
-  background: var(--pill-warning-bg); color: var(--warning);
-  font-size: var(--fs-small); line-height: 16px;
-}
 
 .canvas { min-width: 0; padding: 32px 32px 48px; }
 
@@ -490,8 +483,6 @@ kbd {
   .product { width: auto; padding: 0 8px 0 0; }
   .sidebar { flex-wrap: wrap; }
   .product-text span, .steps { display: none; }
-  .sidebar-foot { order: 3; width: 100%; margin: 0; padding: 0 0 4px; }
-  .notice { padding: 6px 10px; }
   .nav { flex-direction: row; }
   .nav-item { width: auto; }
   .canvas { padding: 20px 16px 40px; }

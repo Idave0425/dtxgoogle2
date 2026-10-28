@@ -1,14 +1,8 @@
 // Open-plane shell: the sidebar sits on the page ground. It names the product
-// and its scope, holds the nav, nests the search steps under "Search", and
-// carries the prototype notice (NFR-8) at its foot.
+// and its scope, holds the nav, and nests the search steps under "Search".
 
 import { useAppState, useDispatch } from '../../state/context';
-import {
-  selectAllParts,
-  selectFurthestReachable,
-  selectSteps,
-  selectVolumeSource,
-} from '../../state/selectors';
+import { selectFurthestReachable, selectSteps } from '../../state/selectors';
 import { labelFor } from '../../engine/match';
 import { REVIEW_STEP_KEY, SCOPE_STEP_KEY } from '../../engine/steps';
 import type { Screen } from '../../types';
@@ -121,15 +115,6 @@ export function Sidebar() {
         ))}
       </nav>
 
-      <div className="sidebar-foot">
-        <p className="notice" role="note" aria-label="Prototype notice">
-          Prototype, not connected to any Google system. Runs on a static file of{' '}
-          {selectAllParts().length} parts; nothing leaves this tab.
-          {selectVolumeSource() === 'sample'
-            ? ' Order volumes are proof-of-concept sample data.'
-            : ''}
-        </p>
-      </div>
     </aside>
   );
 }
