@@ -12,12 +12,11 @@ creating a new GPN.
 
 ```
 npm install
-npm run build:fixture   # one-off ETL: data/*.csv → src/fixtures/*.json
-npm run dev             # open http://127.0.0.1:5173/
+npm run dev             # open http://localhost:5173/
 ```
 
-That is the whole setup. The fixture is committed, so you can skip
-`build:fixture` after the first run unless the CSVs change.
+That is the whole setup. The demo fixture is committed, so there is no data
+step.
 
 ### Scripts
 
