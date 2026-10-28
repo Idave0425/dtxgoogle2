@@ -49,10 +49,10 @@ export function NewGpnRequest() {
   }
 
   return (
-    <div className="new-gpn">
+    <div className="new-gpn card">
       <div className="new-gpn-head">
         <h3>Draft new-GPN request</h3>
-        <button className="btn btn-primary" onClick={copy}>
+        <button className="btn btn-secondary btn-sm" onClick={copy}>
           Copy to clipboard
         </button>
       </div>

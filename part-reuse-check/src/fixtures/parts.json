@@ -8,7 +8,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 33
+        "row": 36
       }
     ],
     "manufacturers": [
@@ -51,7 +51,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 21
+        "row": 24
       }
     ],
     "manufacturers": [
@@ -97,7 +97,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 22
+        "row": 25
       }
     ],
     "manufacturers": [
@@ -143,7 +143,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 27
+        "row": 30
       }
     ],
     "manufacturers": [
@@ -190,7 +190,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 7
+        "row": 8
       }
     ],
     "manufacturers": [
@@ -237,7 +237,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 3
+        "row": 4
       }
     ],
     "manufacturers": [
@@ -283,7 +283,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 8
+        "row": 9
       }
     ],
     "manufacturers": [
@@ -372,6 +372,53 @@
     }
   },
   {
+    "gpn": "07052665",
+    "gpnKey": "7052665",
+    "description": "Screw, M3x0.5mm Thread, Pan Head, Phillips, Zinc-Plated Steel, 8mm Long (100 Pack)",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 3
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "McMaster-Carr",
+        "partNumber": "91290A113-100"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 8,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "8mm Long"
+    },
+    "packaging": {
+      "quantity": 100,
+      "isKit": false
+    }
+  },
+  {
     "gpn": "07070024",
     "gpnKey": "7070024",
     "description": "Screw, M3x0.5mm Thread, 8mm Long, Pan Head, Phillips, Steel, Zinc",
@@ -380,7 +427,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 11
+        "row": 12
       }
     ],
     "manufacturers": [
@@ -427,7 +474,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 12
+        "row": 13
       }
     ],
     "manufacturers": [
@@ -474,7 +521,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 9
+        "row": 10
       }
     ],
     "manufacturers": [
@@ -521,7 +568,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 10
+        "row": 11
       }
     ],
     "manufacturers": [
@@ -567,7 +614,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 6
+        "row": 7
       }
     ],
     "manufacturers": [
@@ -614,7 +661,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 4
+        "row": 5
       }
     ],
     "manufacturers": [
@@ -661,7 +708,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 13
+        "row": 14
       }
     ],
     "manufacturers": [
@@ -708,7 +755,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 14
+        "row": 15
       }
     ],
     "manufacturers": [
@@ -755,7 +802,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 15
+        "row": 16
       }
     ],
     "manufacturers": [
@@ -802,7 +849,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 16
+        "row": 17
       }
     ],
     "manufacturers": [
@@ -849,7 +896,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 17
+        "row": 18
       }
     ],
     "manufacturers": [
@@ -888,6 +935,100 @@
     }
   },
   {
+    "gpn": "12345006",
+    "gpnKey": "12345006",
+    "description": "Screw, M3x0.5mm Thread, 5.5mm Long, Pan Head, Phillips, Steel, Zinc Plated",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Production",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 19
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Bossard",
+        "partNumber": "BN380-M3-5.5"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 5.5,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "5.5mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
+    "gpn": "12345007",
+    "gpnKey": "12345007",
+    "description": "Screw, M3x0.5mm Thread, 5.4mm Long, Pan Head, Phillips, Steel, Zinc Plated",
+    "partType": "Fastener-Bolts & Screws",
+    "phase": "Preliminary",
+    "sources": [
+      {
+        "sheet": "Set 02",
+        "row": 20
+      }
+    ],
+    "manufacturers": [
+      {
+        "name": "Keystone",
+        "partNumber": "KS-M3-5.4-PPZ"
+      }
+    ],
+    "attributes": {
+      "family": "screw",
+      "threadSize": "M3",
+      "threadPitchMm": 0.5,
+      "lengthMm": 5.4,
+      "headType": "pan",
+      "driveType": "phillips",
+      "driveSize": null,
+      "material": "steel",
+      "materialGrade": null,
+      "finish": "zinc plated",
+      "gradeClass": null,
+      "integralWasher": null,
+      "fitsScrewSize": null,
+      "washerStyle": null,
+      "innerDiameterMm": null,
+      "outerDiameterMm": null,
+      "thicknessMm": null
+    },
+    "raw": {
+      "threadSize": "M3",
+      "threadPitchMm": "0.5",
+      "lengthMm": "5.4mm Long"
+    },
+    "packaging": {
+      "quantity": null,
+      "isKit": false
+    }
+  },
+  {
     "gpn": "12345010",
     "gpnKey": "12345010",
     "description": "Screw, M4x0.7mm Thread, 10mm Long, Socket Head, Hex, Alloy Steel, Black Oxide",
@@ -896,7 +1037,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 18
+        "row": 21
       }
     ],
     "manufacturers": [
@@ -943,7 +1084,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 19
+        "row": 22
       }
     ],
     "manufacturers": [
@@ -990,7 +1131,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 20
+        "row": 23
       }
     ],
     "manufacturers": [
@@ -1037,7 +1178,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 5
+        "row": 6
       }
     ],
     "manufacturers": [
@@ -1084,7 +1225,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 23
+        "row": 26
       }
     ],
     "manufacturers": [
@@ -1131,7 +1272,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 24
+        "row": 27
       }
     ],
     "manufacturers": [
@@ -1178,7 +1319,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 25
+        "row": 28
       }
     ],
     "manufacturers": [
@@ -1225,7 +1366,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 26
+        "row": 29
       }
     ],
     "manufacturers": [
@@ -1272,7 +1413,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 28
+        "row": 31
       }
     ],
     "manufacturers": [
@@ -1319,7 +1460,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 29
+        "row": 32
       }
     ],
     "manufacturers": [
@@ -1367,7 +1508,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 30
+        "row": 33
       }
     ],
     "manufacturers": [
@@ -1412,7 +1553,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 31
+        "row": 34
       }
     ],
     "manufacturers": [
@@ -1460,7 +1601,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 32
+        "row": 35
       }
     ],
     "manufacturers": [
@@ -1508,7 +1649,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 34
+        "row": 37
       }
     ],
     "manufacturers": [
@@ -1554,7 +1695,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 35
+        "row": 38
       }
     ],
     "manufacturers": [
@@ -1602,7 +1743,7 @@
     "sources": [
       {
         "sheet": "Set 02",
-        "row": 36
+        "row": 39
       }
     ],
     "manufacturers": [

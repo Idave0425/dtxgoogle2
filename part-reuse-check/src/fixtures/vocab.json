@@ -6,7 +6,7 @@
       "rawVariants": [
         "screw"
       ],
-      "count": 21
+      "count": 24
     },
     {
       "canonical": "washer",
@@ -61,7 +61,7 @@
         "PHCS",
         "PHP"
       ],
-      "count": 15
+      "count": 18
     },
     {
       "canonical": "hex",
@@ -112,7 +112,7 @@
         "PH1",
         "PH2"
       ],
-      "count": 16
+      "count": 19
     },
     {
       "canonical": "hex",
@@ -144,7 +144,7 @@
         "STEEL",
         "STL"
       ],
-      "count": 23
+      "count": 26
     },
     {
       "canonical": "stainless steel",
@@ -193,7 +193,7 @@
         "ZP",
         "ZN"
       ],
-      "count": 23
+      "count": 26
     },
     {
       "canonical": "passivated",
@@ -333,7 +333,7 @@
       "rawVariants": [
         "M3"
       ],
-      "count": 21
+      "count": 24
     },
     {
       "canonical": "M5",
@@ -399,7 +399,7 @@
       "rawVariants": [
         "0.5"
       ],
-      "count": 15
+      "count": 18
     },
     {
       "canonical": "0.7",
@@ -468,6 +468,22 @@
       "count": 1
     },
     {
+      "canonical": "5.4",
+      "label": "5.4 mm",
+      "rawVariants": [
+        "5.4mm Long"
+      ],
+      "count": 1
+    },
+    {
+      "canonical": "5.5",
+      "label": "5.5 mm",
+      "rawVariants": [
+        "5.5mm Long"
+      ],
+      "count": 1
+    },
+    {
       "canonical": "6",
       "label": "6 mm",
       "rawVariants": [
@@ -485,7 +501,7 @@
         "M3 x 0.5 x 8 mm",
         "8mm"
       ],
-      "count": 11
+      "count": 12
     },
     {
       "canonical": "9.525",

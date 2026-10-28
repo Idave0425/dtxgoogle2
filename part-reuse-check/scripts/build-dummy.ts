@@ -12,6 +12,7 @@ import type {
   LifecyclePhase,
   ManufacturerRef,
   PartRecord,
+  VolumeFixture,
 } from '../src/types';
 import { extractAttributes } from './lib/extract';
 import { buildVocabulary } from './lib/vocab';
@@ -47,6 +48,17 @@ const SEEDS: Seed[] = [
       { name: 'McMaster-Carr', partNumber: '91290A113' },
       { name: 'Fastenal', partNumber: 'M30500800PP' },
     ],
+  },
+
+  // Pack variant of 07052664: identical part, sold in 100-packs. Google
+  // ruling 3: keep both GPNs, but combine and highlight their volume.
+  {
+    gpn: '07052665',
+    description:
+      'Screw, M3x0.5mm Thread, Pan Head, Phillips, Zinc-Plated Steel, 8mm Long (100 Pack)',
+    partType: 'Fastener-Bolts & Screws',
+    phase: 'Production',
+    manufacturers: [{ name: 'McMaster-Carr', partNumber: '91290A113-100' }],
   },
 
   // Same part, worse description. Pitch, material and finish all unstated →
@@ -183,6 +195,25 @@ const SEEDS: Seed[] = [
     partType: 'Fastener-Bolts & Screws',
     phase: 'Production',
     manufacturers: [{ name: 'PEM', partNumber: 'PFS2-M3-6-ZI' }],
+  },
+
+  // Near-match pair (Week 3 feedback): 5.4 mm vs 5.5 mm. Search 5.4 and the
+  // 5.5 mm part shows as a close match, with far higher volume.
+  {
+    gpn: '12345006',
+    description:
+      'Screw, M3x0.5mm Thread, 5.5mm Long, Pan Head, Phillips, Steel, Zinc Plated',
+    partType: 'Fastener-Bolts & Screws',
+    phase: 'Production',
+    manufacturers: [{ name: 'Bossard', partNumber: 'BN380-M3-5.5' }],
+  },
+  {
+    gpn: '12345007',
+    description:
+      'Screw, M3x0.5mm Thread, 5.4mm Long, Pan Head, Phillips, Steel, Zinc Plated',
+    partType: 'Fastener-Bolts & Screws',
+    phase: 'Preliminary',
+    manufacturers: [{ name: 'Keystone', partNumber: 'KS-M3-5.4-PPZ' }],
   },
 
   // ========================================================================
@@ -356,6 +387,50 @@ const SEEDS: Seed[] = [
   },
 ];
 
+// -------- sample volumes ---------------------------------------------------
+// ILLUSTRATIVE ONLY. Google has not shared vendor volumes yet. These numbers
+// exist so the volume ranking and "preferred" logic can be demoed, and the UI
+// labels them "sample" everywhere they appear. A few GPNs are deliberately
+// left out to show the "volume pending" state (Google said ~85% coverage is
+// acceptable). Pieces per year, purchase orders per year.
+const SAMPLE_VOLUMES: Record<string, [number, number]> = {
+  '07052664': [48000, 36],
+  '07052665': [22000, 14],
+  '07022596': [3100, 6],
+  '1106617': [9600, 12],
+  '1249277': [400, 2],
+  '1094168': [1200, 3],
+  '07016397': [15000, 18],
+  '07035144': [6200, 9],
+  '1017592-01': [2400, 4],
+  '07070024': [5200, 8],
+  '07082586': [1800, 3],
+  '12345001': [7400, 10],
+  '12345002': [3300, 5],
+  '12345003': [21000, 22],
+  '12345004': [250, 1],
+  '12345005': [4100, 6],
+  '12345006': [26000, 24],
+  '12345007': [600, 2],
+  '12345010': [11000, 14],
+  '12345011': [8800, 11],
+  '12345012': [1500, 3],
+  '07001144': [300, 1],
+  '07004435': [5200, 7],
+  '13000001': [6400, 8],
+  '14000001': [30000, 26],
+  '14000002': [2600, 4],
+  '07015054': [12000, 10],
+  '14000003': [7000, 9],
+  '15000001': [18000, 20],
+  '15000002': [25000, 21],
+  '15000003': [3400, 5],
+  '15000004': [14000, 15],
+  '04100607': [9000, 10],
+  '15000010': [300, 1],
+  '16000001': [2200, 4],
+};
+
 // ---- turn seeds into PartRecords -----------------------------------------
 const allParts: PartRecord[] = SEEDS.map((seed, i) => {
   const { attributes, raw } = extractAttributes(seed.partType, seed.description);
@@ -391,6 +466,17 @@ writeFileSync(
   resolve(outDir, 'clusters.json'),
   JSON.stringify(clusters, null, 2)
 );
+const volumes: VolumeFixture = {
+  source: 'sample',
+  asOf: null,
+  byGpn: Object.fromEntries(
+    Object.entries(SAMPLE_VOLUMES)
+      .filter(([gpn]) => parts.some((p) => p.gpn === gpn))
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([gpn, [annualQty, orders]]) => [gpn, { annualQty, orders }])
+  ),
+};
+writeFileSync(resolve(outDir, 'volumes.json'), JSON.stringify(volumes, null, 2));
 
 // ---- summary -------------------------------------------------------------
 const byFamily = new Map<string, number>();
@@ -408,5 +494,7 @@ console.log(`vocab keys    : ${Object.keys(vocab).length}`);
 console.log(`clusters      : ${clusters.length}`);
 console.log(`  shared-mpn            : ${clusters.filter((c) => c.evidence === 'shared-mpn').length}`);
 console.log(`  identical-description : ${clusters.filter((c) => c.evidence === 'identical-description').length}`);
-console.log('wrote src/fixtures/{parts,vocab,clusters}.json');
+console.log(`  pack-variant          : ${clusters.filter((c) => c.evidence === 'pack-variant').length}`);
+console.log(`sample volumes: ${Object.keys(volumes.byGpn).length}/${parts.length} GPNs`);
+console.log('wrote src/fixtures/{parts,vocab,clusters,volumes}.json');
 console.log('');

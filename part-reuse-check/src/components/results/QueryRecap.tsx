@@ -1,48 +1,41 @@
 import { useAppState, useDispatch } from '../../state/context';
 import { selectSteps } from '../../state/selectors';
+import { labelFor } from '../../engine/match';
+import { REVIEW_STEP_KEY, SCOPE_STEP_KEY } from '../../engine/steps';
 
 export function QueryRecap() {
   const state = useAppState();
   const dispatch = useDispatch();
-  const steps = selectSteps(state).filter(
-    (s) => s.key !== ('__scope__' as any) && s.key !== ('__review__' as any)
-  );
+  const allSteps = selectSteps(state);
+  const steps = allSteps.filter((s) => s.key !== SCOPE_STEP_KEY && s.key !== REVIEW_STEP_KEY);
   const scope = state.query.scope;
 
-  const answered = steps.filter(
-    (s) => state.query.answers[s.key]?.state === 'answered'
-  );
-  const skipped = steps.filter(
-    (s) => state.query.answers[s.key]?.state === 'skipped'
-  );
+  const answered = steps.filter((s) => state.query.answers[s.key]?.state === 'answered');
+  const skipped = steps.filter((s) => state.query.answers[s.key]?.state === 'skipped');
 
   const results = state.results ?? [];
-  const nMatch = results.filter((r) => r.verdict === 'match').length;
-  const nReview = results.filter((r) => r.verdict === 'review').length;
-  const nDiff = results.filter((r) => r.verdict === 'different').length;
+  const n = (v: string) => results.filter((r) => r.verdict === v).length;
+
+  function edit(key: string) {
+    dispatch({ type: 'OPEN_SCREEN', screen: 'wizard' });
+    const idx = allSteps.findIndex((x) => x.key === key);
+    if (idx >= 0) dispatch({ type: 'GOTO_STEP', index: idx });
+  }
 
   return (
-    <section className="query-recap" aria-label="Your search">
-      <div className="recap-head">
-        <div>
-          <h3>Your search</h3>
-          <p className="recap-sub">
-            {answered.length} attribute{answered.length === 1 ? '' : 's'} answered
-            {skipped.length ? `, ${skipped.length} skipped` : ''}. Verdicts
-            update whenever you change the query.
-          </p>
+    <section className="recap card" aria-label="Your search">
+      <div className="recap-top">
+        <div className="stats">
+          <div className="stat stat-match"><strong>{n('match')}</strong><span>match</span></div>
+          <div className="stat stat-near"><strong>{n('near')}</strong><span>close</span></div>
+          <div className="stat stat-review"><strong>{n('review')}</strong><span>needs review</span></div>
+          <div className="stat stat-different"><strong>{n('different')}</strong><span>excluded</span></div>
         </div>
         <div className="recap-actions">
-          <button
-            className="btn btn-ghost btn-sm"
-            onClick={() => dispatch({ type: 'OPEN_SCREEN', screen: 'wizard' })}
-          >
-            ← Edit query
+          <button className="btn btn-ghost btn-sm" onClick={() => dispatch({ type: 'OPEN_SCREEN', screen: 'wizard' })}>
+            Edit search
           </button>
-          <button
-            className="btn btn-ghost btn-sm"
-            onClick={() => dispatch({ type: 'RESET' })}
-          >
+          <button className="btn btn-secondary btn-sm" onClick={() => dispatch({ type: 'RESET' })}>
             New search
           </button>
         </div>
@@ -52,62 +45,24 @@ export function QueryRecap() {
         {answered.map((s) => {
           const a = state.query.answers[s.key]!;
           return (
-            <button
-              key={s.key as string}
-              className="recap-chip recap-chip-answered"
-              title="Click to change"
-              onClick={() => {
-                dispatch({ type: 'OPEN_SCREEN', screen: 'wizard' });
-                const idx = selectSteps(state).findIndex((x) => x.key === s.key);
-                if (idx >= 0) dispatch({ type: 'GOTO_STEP', index: idx });
-              }}
-            >
-              <span className="recap-chip-k">
-                {s.prompt.replace(/\?$/, '')}
-              </span>
-              <span className="recap-chip-v">
-                {String(a.value)}
-                {s.unit === 'mm' ? ' mm' : ''}
-              </span>
+            <button key={s.key as string} className="recap-chip" title="Change" onClick={() => edit(s.key)}>
+              <span className="recap-k">{labelFor(s.key)}</span>
+              {String(a.value)}
+              {s.unit === 'mm' ? ' mm' : ''}
             </button>
           );
         })}
         {skipped.map((s) => (
-          <button
-            key={s.key as string}
-            className="recap-chip recap-chip-skipped"
-            title="Click to answer"
-            onClick={() => {
-              dispatch({ type: 'OPEN_SCREEN', screen: 'wizard' });
-              const idx = selectSteps(state).findIndex((x) => x.key === s.key);
-              if (idx >= 0) dispatch({ type: 'GOTO_STEP', index: idx });
-            }}
-          >
-            <span className="recap-chip-k">
-              {s.prompt.replace(/\?$/, '')}
-            </span>
-            <span className="recap-chip-v">skipped</span>
+          <button key={s.key as string} className="recap-chip is-skipped" title="Answer" onClick={() => edit(s.key)}>
+            <span className="recap-k">{labelFor(s.key)}</span>
+            skipped
           </button>
         ))}
-        <span className="recap-chip recap-chip-scope">
-          <span className="recap-chip-k">scope</span>
-          <span className="recap-chip-v">
-            {scope.phases.join(', ')}
-            {scope.allowKits ? ' · kits' : ''}
-            {scope.strict ? ' · strict' : ''}
-          </span>
-        </span>
-      </div>
-
-      <div className="recap-counts">
-        <span className="count-pill count-match">
-          <strong>{nMatch}</strong>&nbsp;match
-        </span>
-        <span className="count-pill count-review">
-          <strong>{nReview}</strong>&nbsp;needs review
-        </span>
-        <span className="count-pill count-different">
-          <strong>{nDiff}</strong>&nbsp;excluded
+        <span className="recap-chip is-scope">
+          <span className="recap-k">scope</span>
+          {scope.phases.join(', ')}
+          {scope.allowKits ? ' · kits' : ''}
+          {scope.strict ? ' · strict' : ''}
         </span>
       </div>
     </section>

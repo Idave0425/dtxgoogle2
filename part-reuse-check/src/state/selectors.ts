@@ -11,7 +11,8 @@ import type {
 } from '../types';
 import { filterCandidates, optionsForStep, poolCounts } from '../engine/candidates';
 import { stepsFor } from '../engine/steps';
-import { ALL_PARTS, CLUSTERS, VOCAB } from './context';
+import { ALL_PARTS, CLUSTERS, VOCAB, VOLUMES } from './context';
+import { preferredGpn, volumeOf, volumeTier } from '../engine/volume';
 
 export function selectFamily(state: AppState): Family | null {
   const a = state.query.answers['family'];
@@ -64,4 +65,44 @@ export function selectPartByGpn(gpn: string): PartRecord | undefined {
 export function selectExcluded(state: AppState) {
   if (!state.results) return [];
   return state.results.filter((r) => r.verdict === 'different');
+}
+
+// ---------- volume (Week 3 feedback) ----------
+
+export function selectVolumeSource() {
+  return VOLUMES.source;
+}
+
+export function selectVolume(gpn: string) {
+  return { record: volumeOf(VOLUMES, gpn), tier: volumeTier(VOLUMES, gpn) };
+}
+
+/** Largest annual quantity among the given GPNs, for scaling volume bars. */
+export function selectMaxVolume(gpns: string[]): number {
+  let max = 0;
+  for (const g of gpns) max = Math.max(max, volumeOf(VOLUMES, g)?.annualQty ?? 0);
+  return max;
+}
+
+export function selectPreferredGpn(state: AppState): string | null {
+  return state.results ? preferredGpn(VOLUMES, state.results) : null;
+}
+
+export function selectVolumes() {
+  return VOLUMES;
+}
+
+/**
+ * Index of the furthest step the engineer may jump to: every attribute step
+ * before it is answered or skipped. Scope always counts as settled.
+ */
+export function selectFurthestReachable(state: AppState): number {
+  const steps = selectSteps(state);
+  for (let i = 0; i < steps.length; i++) {
+    const k = steps[i].key as string;
+    if (k === '__scope__' || k === '__review__') continue;
+    const a = state.query.answers[steps[i].key];
+    if (!a || a.state === 'pending') return Math.max(i, state.stepIndex);
+  }
+  return steps.length - 1;
 }

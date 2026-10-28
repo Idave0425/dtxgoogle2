@@ -5,54 +5,57 @@ import { ResultsScreen } from './components/results/ResultsScreen';
 import { CompareScreen } from './components/compare/CompareScreen';
 import { DeadEndScreen } from './components/deadend/DeadEndScreen';
 import { FlagLogPanel } from './components/flags/FlagLogPanel';
+import type { Screen } from './types';
 
 export default function App() {
   const state = useAppState();
   const dispatch = useDispatch();
+  const open = (screen: Screen) => dispatch({ type: 'OPEN_SCREEN', screen });
+  const nResults = state.results?.filter((r) => r.verdict !== 'different').length ?? 0;
+
+  const tabs: { screen: Screen; label: string; count?: number; disabled?: boolean }[] = [
+    { screen: 'wizard', label: 'Search' },
+    { screen: 'results', label: 'Results', count: state.results ? nResults : undefined, disabled: !state.results },
+    { screen: 'compare', label: 'Compare', count: state.compareGpns.length || undefined, disabled: state.compareGpns.length !== 2 },
+    { screen: 'flags', label: 'Flags', count: state.flags.length || undefined },
+  ];
+  const current = state.screen === 'deadEnd' ? 'results' : state.screen;
 
   return (
     <div className="app">
-      <PrototypeBanner />
-
-      <header className="app-top">
-        <div className="brand">
-          <span className="brand-mark">PR</span>
-          <div className="brand-text">
-            <h1>Part Reuse Check</h1>
-            <p>Find an existing GPN before you create a new one.</p>
-          </div>
+      <header className="topbar">
+        <div className="topbar-inner">
+          <button className="brand" onClick={() => dispatch({ type: 'RESET' })} title="New search">
+            <span className="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" strokeWidth="2" />
+                <path d="M8 12h8M12 8v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </span>
+            <span className="brand-text">
+              <strong>Part Reuse Check</strong>
+              <span>Find an existing GPN before you create a new one</span>
+            </span>
+          </button>
+          <nav className="tabs" aria-label="Screens">
+            {tabs.map((t) => (
+              <button
+                key={t.screen}
+                className={`tab${current === t.screen ? ' is-current' : ''}`}
+                aria-current={current === t.screen ? 'page' : undefined}
+                disabled={t.disabled}
+                onClick={() => open(state.screen === 'deadEnd' && t.screen === 'results' ? 'deadEnd' : t.screen)}
+              >
+                {t.label}
+                {t.count !== undefined ? <span className="tab-count">{t.count}</span> : null}
+              </button>
+            ))}
+          </nav>
+          <PrototypeBanner />
         </div>
-        <nav className="app-nav">
-          <button
-            className={state.screen === 'wizard' ? 'is-current' : ''}
-            onClick={() => dispatch({ type: 'OPEN_SCREEN', screen: 'wizard' })}
-          >
-            Query
-          </button>
-          <button
-            className={state.screen === 'results' ? 'is-current' : ''}
-            onClick={() => dispatch({ type: 'OPEN_SCREEN', screen: 'results' })}
-            disabled={!state.results}
-          >
-            Results{state.results ? ` (${state.results.filter((r) => r.verdict !== 'different').length})` : ''}
-          </button>
-          <button
-            className={state.screen === 'compare' ? 'is-current' : ''}
-            onClick={() => dispatch({ type: 'OPEN_SCREEN', screen: 'compare' })}
-            disabled={state.compareGpns.length !== 2}
-          >
-            Compare
-          </button>
-          <button
-            className={state.screen === 'flags' ? 'is-current' : ''}
-            onClick={() => dispatch({ type: 'OPEN_SCREEN', screen: 'flags' })}
-          >
-            Flag log{state.flags.length ? ` (${state.flags.length})` : ''}
-          </button>
-        </nav>
       </header>
 
-      <main className="app-main">
+      <main className={`main main-${state.screen}`}>
         {state.screen === 'wizard' && <WizardScreen />}
         {state.screen === 'results' && <ResultsScreen />}
         {state.screen === 'compare' && <CompareScreen />}
@@ -60,8 +63,8 @@ export default function App() {
         {state.screen === 'flags' && <FlagLogPanel />}
       </main>
 
-      <footer className="app-foot">
-        Prototype — demo build, no persistence.
+      <footer className="footer">
+        Runs off a static data file · no backend · nothing leaves this browser tab
       </footer>
     </div>
   );

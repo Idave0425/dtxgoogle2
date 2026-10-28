@@ -1,6 +1,6 @@
 // ============================================================================
-// FROZEN CONTRACT — do not edit outside T1.
-// Transcribed verbatim from ARCHITECTURE.md §4.
+// CONTRACT — transcribed from ARCHITECTURE.md §4, extended additively for the
+// Week 3 Google feedback (volume, near-matches, pack variants). See docs/CHANGES-WEEK3.md.
 // ============================================================================
 
 // ---------- domain ----------
@@ -128,8 +128,9 @@ export interface VocabOption {
 export type Vocabulary = Partial<Record<AttributeKey, VocabOption[]>>;
 
 // ---------- matching ----------
-export type AttributeVerdict = 'match' | 'unknown' | 'differs' | 'not-asked';
-export type ResultVerdict = 'match' | 'review' | 'different';
+/** 'near' = stated, differs, but inside the step's tolerance (Week 3 feedback: 5.4 vs 5.5 mm). */
+export type AttributeVerdict = 'match' | 'near' | 'unknown' | 'differs' | 'not-asked';
+export type ResultVerdict = 'match' | 'near' | 'review' | 'different';
 
 export interface AttributeComparison {
   key: AttributeKey;
@@ -144,12 +145,18 @@ export interface MatchResult {
   comparisons: AttributeComparison[];
   unknownKeys: AttributeKey[];
   differingKeys: AttributeKey[];
+  /** Attributes stated within tolerance of what was asked, not equal. */
+  nearKeys: AttributeKey[];
   /** Populated only for 'different' records, for the excluded summary (FR-13). */
   exclusionReason: string | null;
 }
 
 // ---------- duplicates ----------
-export type DuplicateEvidence = 'shared-mpn' | 'identical-description';
+/**
+ * Week 3 feedback adds 'pack-variant': same part, sold as single vs bulk pack.
+ * Kept as separate GPNs, but their volumes are combined.
+ */
+export type DuplicateEvidence = 'shared-mpn' | 'identical-description' | 'pack-variant';
 
 export interface DuplicateCluster {
   id: string;
@@ -173,7 +180,39 @@ export interface StepDefinition {
   unit?: 'mm';
   /** When true, a stated difference makes a record 'different' (FR-11). */
   disqualifying: boolean;
+  /**
+   * Numeric steps only. A stated value within max(abs, rel × asked) of the
+   * asked value is a near-match rather than a difference.
+   */
+  nearTolerance?: { abs: number; rel: number };
 }
+
+// ---------- volume (Week 3 feedback) ----------
+
+/**
+ * Where the volume numbers came from.
+ *  - 'vendor': real order history from Google's fastener vendors.
+ *  - 'sample': illustrative numbers in the demo fixture. Never real.
+ *  - 'none':   no data yet. Every part shows "volume pending".
+ */
+export type VolumeSource = 'vendor' | 'sample' | 'none';
+
+export interface VolumeRecord {
+  /** Pieces ordered in the trailing 12 months. */
+  annualQty: number;
+  /** Purchase orders in the trailing 12 months, when known. */
+  orders: number | null;
+}
+
+export interface VolumeFixture {
+  source: VolumeSource;
+  /** ISO date the numbers were pulled, null when source is 'none'. */
+  asOf: string | null;
+  byGpn: Record<string, VolumeRecord>;
+}
+
+/** 'high-runner' = top fifth of parts with volume data. */
+export type VolumeTier = 'high-runner' | 'regular' | 'low' | 'pending';
 
 // ---------- app state ----------
 export type Screen = 'wizard' | 'results' | 'compare' | 'deadEnd' | 'flags';

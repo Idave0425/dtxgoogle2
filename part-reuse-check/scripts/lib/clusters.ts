@@ -1,5 +1,6 @@
-// Duplicate detection. REQUIREMENTS §7.
-// Two evidence types: shared-mpn and identical-description.
+// Duplicate detection. REQUIREMENTS §7, plus Week 3 feedback.
+// Three evidence types: shared-mpn, identical-description, and pack-variant
+// (same part sold single vs bulk; kept as separate GPNs, volumes combined).
 // Builder-time only. Conflicts (stated differing values) are marked.
 
 import type {
@@ -89,6 +90,42 @@ export function findIdenticalDescriptionClusters(
   return clusters;
 }
 
+/** Strips pack-size wording so "8mm Long (100 Pack)" and "8mm Long" compare equal. */
+export function stripPackWording(d: string): string {
+  return d
+    .replace(/\(?\b\d+\s*(?:pieces|pcs|pack|pk|count|ct)\b\)?/gi, ' ')
+    .replace(/\b(?:bulk|single|bag of|box of|qty)\b/gi, ' ');
+}
+
+export function findPackVariantClusters(parts: PartRecord[]): DuplicateCluster[] {
+  const byBase = new Map<string, PartRecord[]>();
+  for (const p of parts) {
+    const k = normDesc(stripPackWording(p.description));
+    if (!k) continue;
+    if (!byBase.has(k)) byBase.set(k, []);
+    byBase.get(k)!.push(p);
+  }
+  const clusters: DuplicateCluster[] = [];
+  for (const [k, members] of byBase) {
+    const unique = Array.from(new Map(members.map((p) => [p.gpnKey, p])).values());
+    if (unique.length < 2) continue;
+    // Only a pack variant when the members actually differ in pack size.
+    const qtys = new Set(unique.map((p) => p.packaging.quantity ?? 1));
+    if (qtys.size < 2) continue;
+    clusters.push({
+      id: `pack:${hash12(k)}`,
+      evidence: 'pack-variant',
+      evidenceValue: unique
+        .map((p) => `${p.gpn} × ${p.packaging.quantity ?? 1}`)
+        .sort()
+        .join(', '),
+      gpns: unique.map((p) => p.gpn).sort(),
+      conflictingKeys: [],
+    });
+  }
+  return clusters;
+}
+
 export function markConflicts(
   cluster: DuplicateCluster,
   parts: PartRecord[]
@@ -120,7 +157,10 @@ export function buildClusters(
   const descClusters = findIdenticalDescriptionClusters(parts).map((c) =>
     markConflicts(c, inScopePartForCluster(c))
   );
-  const all = [...mpnClusters, ...descClusters];
+  const packClusters = findPackVariantClusters(parts).map((c) =>
+    markConflicts(c, inScopePartForCluster(c))
+  );
+  const all = [...mpnClusters, ...descClusters, ...packClusters];
   all.sort((a, b) => a.id.localeCompare(b.id));
   return all;
 }

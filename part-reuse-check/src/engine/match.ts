@@ -9,6 +9,7 @@ import type {
   Query,
   StepDefinition,
 } from '../types';
+import { isNear } from './steps';
 
 const EPS = 0.001;
 
@@ -33,7 +34,11 @@ export function compareAttribute(
     key,
     asked: asked.value,
     found,
-    verdict: equal(asked.value, found) ? 'match' : 'differs',
+    verdict: equal(asked.value, found)
+      ? 'match'
+      : isNear(key, asked.value, found)
+      ? 'near'
+      : 'differs',
   };
 }
 
@@ -57,6 +62,9 @@ export function matchPart(
   const differingKeys = comparisons
     .filter((c) => c.verdict === 'differs' && disqualifying.has(c.key))
     .map((c) => c.key);
+  const nearKeys = comparisons
+    .filter((c) => c.verdict === 'near')
+    .map((c) => c.key);
   const unknownKeys = comparisons
     .filter((c) => c.verdict === 'unknown')
     .map((c) => c.key);
@@ -69,6 +77,9 @@ export function matchPart(
       (c) => c.verdict === 'differs' && disqualifying.has(c.key)
     )!;
     exclusionReason = `${labelFor(first.key)} ${formatVal(first.found)}, asked ${formatVal(first.asked)}`;
+  } else if (nearKeys.length > 0) {
+    // Close, not equal. Shown with its volume so the engineer decides.
+    verdict = 'near';
   } else if (unknownKeys.length > 0) {
     verdict = 'review';
   } else {
@@ -76,7 +87,7 @@ export function matchPart(
     verdict = 'match';
   }
 
-  return { part, verdict, comparisons, unknownKeys, differingKeys, exclusionReason };
+  return { part, verdict, comparisons, unknownKeys, differingKeys, nearKeys, exclusionReason };
 }
 
 export function matchAll(
@@ -87,7 +98,7 @@ export function matchAll(
   return parts.map((p) => matchPart(p, query, steps));
 }
 
-function formatVal(v: string | number | null): string {
+export function formatVal(v: string | number | null): string {
   if (v === null) return 'unknown';
   if (typeof v === 'number') return `${v}mm`;
   return String(v);

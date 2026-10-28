@@ -1,9 +1,9 @@
 // Offline ETL. Run with `npm run build:fixture`.
 // Reads data/set01.csv + data/set02.csv, merges by normalised GPN, filters to
 // fastener part types, runs extraction, writes parts.json / vocab.json /
-// clusters.json into src/fixtures/, then prints a summary table (ARCHITECTURE §6).
+// clusters.json / volumes.json into src/fixtures/, then prints a summary table (ARCHITECTURE §6).
 
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -12,6 +12,7 @@ import type {
   ManufacturerRef,
   PartRecord,
   SourceRef,
+  VolumeFixture,
 } from '../src/types';
 import { extractAttributes } from './lib/extract';
 import { buildVocabulary } from './lib/vocab';
@@ -208,6 +209,40 @@ const parts = allParts
 const vocab = buildVocabulary(parts);
 const clusters = buildClusters(parts, allParts);
 
+// ---- volumes (Week 3 feedback) ---------------------------------------------
+// Optional data/volumes.csv with header: GPN,Annual Qty,Orders[,As Of]
+// Absent file => source 'none' and the UI shows "volume pending" everywhere.
+// Never fill gaps with estimates: a part missing from the file stays pending.
+function buildVolumes(): VolumeFixture {
+  const path = resolve(ROOT, 'data/volumes.csv');
+  if (!existsSync(path)) return { source: 'none', asOf: null, byGpn: {} };
+  const rows = parseCsv(readFileSync(path, 'utf8'));
+  const [header, ...body] = rows;
+  const col = (name: string) =>
+    header.findIndex((h) => h.trim().toLowerCase() === name.toLowerCase());
+  const iGpn = col('GPN');
+  const iQty = col('Annual Qty');
+  const iOrders = col('Orders');
+  const iAsOf = col('As Of');
+  const inScope = new Map(parts.map((p) => [p.gpnKey, p.gpn]));
+  const byGpn: VolumeFixture['byGpn'] = {};
+  let asOf: string | null = null;
+  for (const r of body) {
+    const key = (r[iGpn] ?? '').trim().replace(/^0+/, '');
+    const gpn = inScope.get(key);
+    const qty = Number((r[iQty] ?? '').replace(/,/g, ''));
+    if (!gpn || !Number.isFinite(qty)) continue;
+    const orders = iOrders >= 0 ? Number(r[iOrders]) : NaN;
+    byGpn[gpn] = { annualQty: qty, orders: Number.isFinite(orders) ? orders : null };
+    if (iAsOf >= 0 && r[iAsOf]) asOf = r[iAsOf].trim();
+  }
+  const sorted = Object.fromEntries(
+    Object.entries(byGpn).sort(([a], [b]) => a.localeCompare(b))
+  );
+  return { source: 'vendor', asOf, byGpn: sorted };
+}
+const volumes = buildVolumes();
+
 // ---- write ---------------------------------------------------------------
 const outDir = resolve(ROOT, 'src/fixtures');
 mkdirSync(outDir, { recursive: true });
@@ -217,6 +252,7 @@ writeFileSync(
   resolve(outDir, 'clusters.json'),
   JSON.stringify(clusters, null, 2)
 );
+writeFileSync(resolve(outDir, 'volumes.json'), JSON.stringify(volumes, null, 2));
 
 // ---- summary -------------------------------------------------------------
 const countBy = <K extends string>(xs: PartRecord[], f: (p: PartRecord) => K) => {
@@ -263,6 +299,12 @@ console.log('');
 console.log(`kits                         ${kits}`);
 console.log(`shared-MPN clusters          ${mpnClusters.length}  (${mpnGpns} GPNs)`);
 console.log(`identical-desc clusters      ${descClusters.length}  (${descGpns} GPNs)`);
+console.log(`pack-variant clusters        ${clusters.filter((c) => c.evidence === 'pack-variant').length}`);
+console.log(
+  volumes.source === 'none'
+    ? 'volumes                      pending (no data/volumes.csv)'
+    : `volumes                      ${Object.keys(volumes.byGpn).length}/${parts.length} GPNs (${((Object.keys(volumes.byGpn).length / parts.length) * 100).toFixed(1)}%)`
+);
 console.log('');
 console.log('attribute coverage (% of in-scope records stating a value)');
 for (const k of [

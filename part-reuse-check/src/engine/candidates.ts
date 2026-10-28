@@ -9,6 +9,7 @@ import type {
   Vocabulary,
   VocabOption,
 } from '../types';
+import { isNear } from './steps';
 
 const EPS = 0.001;
 
@@ -42,7 +43,7 @@ export function filterCandidates(
         if (strict) return false; // strict: unknowns excluded
         continue; // inclusive: keep (R2)
       }
-      if (!valuesEqual(found, ans.value)) return false;
+      if (!valuesEqual(found, ans.value) && !isNear(key, ans.value, found)) return false;
     }
     return true;
   });
@@ -51,22 +52,26 @@ export function filterCandidates(
 export function poolCounts(
   parts: PartRecord[],
   query: Query
-): { total: number; exact: number; unknown: number } {
+): { total: number; exact: number; near: number; unknown: number } {
   const pool = filterCandidates(parts, query);
   let exact = 0;
+  let near = 0;
   let unknown = 0;
   for (const p of pool) {
     let anyUnknown = false;
+    let anyNear = false;
     for (const key of Object.keys(query.answers) as AttributeKey[]) {
       const ans = query.answers[key];
       if (!ans || ans.state !== 'answered') continue;
       const found = (p.attributes as any)[key] as string | number | null;
       if (found === null || found === undefined) anyUnknown = true;
+      else if (!valuesEqual(found, ans.value)) anyNear = true;
     }
     if (anyUnknown) unknown++;
+    else if (anyNear) near++;
     else exact++;
   }
-  return { total: pool.length, exact, unknown };
+  return { total: pool.length, exact, near, unknown };
 }
 
 /**

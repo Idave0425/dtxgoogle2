@@ -26,7 +26,8 @@ That is the whole setup. The fixture is committed, so you can skip
 | `npm run dev`          | Vite dev server at `http://127.0.0.1:5173/`           |
 | `npm run build`        | type-check + production bundle in `dist/`             |
 | `npm test`             | Vitest unit + integration suite                       |
-| `npm run build:fixture`| Re-run the ETL to regenerate `src/fixtures/*.json`    |
+| `npm run build:fixture`| Rebuild the demo fixture (incl. **sample** volumes)   |
+| `npm run build:fixture:real` | Real ETL from `data/*.csv` (+ optional `data/volumes.csv`) |
 
 ## What this prototype is not
 
@@ -72,6 +73,17 @@ Baked into `src/engine/`. An implementation that violates any of these is wrong.
   asked for is stated in the record and equal; it does not mean parts are
   interchangeable. That is an engineer's call.
 
+## Volume (Week 3 Google feedback)
+
+Results are ranked **match → lifecycle → volume**. The highest-volume match
+or close match is shown as the **preferred part**. Parts with no order data
+show **volume pending** and rank after parts with data, never as zero.
+
+The committed demo fixture uses **sample** volumes, labelled as such in the
+UI. Google hasn't shared vendor data yet. To load real data, add
+`data/volumes.csv` (`GPN,Annual Qty,Orders[,As Of]`) and run
+`npm run build:fixture:real`. Full details: `docs/CHANGES-WEEK3.md`.
+
 ## Demo script
 
 ### 1. Happy path
@@ -112,7 +124,23 @@ Run a query that returns `07070024`.
 > wording that explicitly says the members **may** describe the same part —
 > never "duplicate confirmed".
 
-### 6. Dead end
+### 6. Volume and near-match (new)
+
+Family **screw** → Thread **M3** → Pitch **0.5** → Length: type **5.4** →
+skip the rest → Search.
+
+> Expected: `12345007` (5.4 mm, 600 / yr) is the **Match**; `12345006`
+> (5.5 mm, 26k / yr) is a **Close match**, tagged High runner and shown as the
+> **Preferred part**, "about 43× the next option".
+
+### 7. Pack variant (new)
+
+Run the happy path and expand `07052664`.
+
+> Expected: a **Pack variant** notice pairing it with `07052665` (100-pack),
+> each member's volume, and the combined 70k / yr.
+
+### 8. Dead end
 
 Family **screw** → Thread **M3** → Pitch **0.35**.
 

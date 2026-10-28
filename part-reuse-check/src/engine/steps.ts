@@ -14,6 +14,31 @@ export const FAMILY_STEP: StepDefinition = {
   disqualifying: true,
 };
 
+/**
+ * Near-match tolerance per numeric attribute (Week 3 feedback). A 5.5 mm
+ * screw should surface as a close match for a 5.4 mm search, with its volume,
+ * so the engineer can choose. Thread pitch is deliberately absent: a pitch
+ * that is close is still a pitch that does not fit.
+ */
+export const NEAR_TOLERANCE: Partial<Record<AttributeKey, { abs: number; rel: number }>> = {
+  lengthMm: { abs: 0.15, rel: 0.03 },
+  innerDiameterMm: { abs: 0.1, rel: 0.03 },
+  outerDiameterMm: { abs: 0.15, rel: 0.03 },
+  thicknessMm: { abs: 0.05, rel: 0.05 },
+};
+
+/** True when `found` is stated, not equal, but within the key's tolerance. */
+export function isNear(
+  key: AttributeKey,
+  asked: string | number | null,
+  found: string | number | null
+): boolean {
+  const tol = NEAR_TOLERANCE[key];
+  if (!tol || typeof asked !== 'number' || typeof found !== 'number') return false;
+  const delta = Math.abs(asked - found);
+  return delta >= 0.001 && delta <= Math.max(tol.abs, tol.rel * asked) + 1e-9;
+}
+
 const S = (
   key: AttributeKey,
   prompt: string,
@@ -21,12 +46,20 @@ const S = (
   kind: 'enum' | 'numeric',
   disqualifying: boolean,
   unit?: 'mm'
-): StepDefinition => ({ key, prompt, help, kind, disqualifying, unit });
+): StepDefinition => ({
+  key,
+  prompt,
+  help,
+  kind,
+  disqualifying,
+  unit,
+  nearTolerance: NEAR_TOLERANCE[key],
+});
 
 const SCREW_STEPS: StepDefinition[] = [
   S('threadSize', 'Thread size?', 'Metric like M3 or imperial like 10-32. We only match what the record actually says — a diameter without a thread designation is unknown.', 'enum', true),
   S('threadPitchMm', 'Thread pitch?', 'Only 11% of screw records state a pitch. Skip if you do not know it — we will not assume the standard value.', 'numeric', true, 'mm'),
-  S('lengthMm', 'Length?', 'Normalised to millimetres. Imperial values like 5/8 inch Long are converted (15.875 mm).', 'numeric', true, 'mm'),
+  S('lengthMm', 'Length?', 'Normalised to millimetres (5/8 inch = 15.875 mm). Type any value; parts within ~3% show up as close matches with their volume.', 'numeric', true, 'mm'),
   S('headType', 'Head type?', 'Pan, flat, socket, hex, truss, button, cap, oval, round, flange, low profile, washer head.', 'enum', true),
   S('driveType', 'Drive type?', 'Phillips, hex, Torx, square, slotted, combo. Torx bit size (T10/T20) is captured but not a filter.', 'enum', true),
   S('material', 'Material?', 'Stainless steel vs plain steel is a real difference. 18-8 / 304 / 316 / A2 / A4 are all stainless and merge for search; the grade shows on the result row.', 'enum', true),

@@ -44,5 +44,15 @@
     "conflictingKeys": [
       "material"
     ]
+  },
+  {
+    "id": "pack:57e2a8d99d27",
+    "evidence": "pack-variant",
+    "evidenceValue": "07052664 × 1, 07052665 × 100",
+    "gpns": [
+      "07052664",
+      "07052665"
+    ],
+    "conflictingKeys": []
   }
 ]

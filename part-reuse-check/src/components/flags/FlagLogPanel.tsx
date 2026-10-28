@@ -9,13 +9,13 @@ export function FlagLogPanel() {
 
   return (
     <div className="flags">
-      <header className="flags-head">
+      <header className="screen-head">
         <h2>Flag log</h2>
         <button
           className="btn btn-ghost"
           onClick={() => dispatch({ type: 'OPEN_SCREEN', screen: state.results ? 'results' : 'wizard' })}
         >
-          ← Back
+          Back
         </button>
       </header>
       <p className="flags-note">

@@ -13,21 +13,25 @@ import type {
   MatchResult,
   PartRecord,
   Vocabulary,
+  VolumeFixture,
 } from '../types';
 import { reducer, initialState, Action } from './reducer';
 import { filterCandidates } from '../engine/candidates';
 import { matchAll } from '../engine/match';
 import { rankResults } from '../engine/rank';
 import { stepsFor } from '../engine/steps';
+import { annualQtyOf } from '../engine/volume';
 
 // Load the generated fixtures once at module load (NFR-2: no runtime file reads).
 import partsJson from '../fixtures/parts.json';
 import vocabJson from '../fixtures/vocab.json';
 import clustersJson from '../fixtures/clusters.json';
+import volumesJson from '../fixtures/volumes.json';
 
 export const ALL_PARTS: PartRecord[] = partsJson as unknown as PartRecord[];
 export const VOCAB: Vocabulary = vocabJson as Vocabulary;
 export const CLUSTERS: DuplicateCluster[] = clustersJson as unknown as DuplicateCluster[];
+export const VOLUMES: VolumeFixture = volumesJson as unknown as VolumeFixture;
 
 interface Ctx {
   state: AppState;
@@ -66,9 +70,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const combined = [...matched, ...differents.filter(
       (r) => !matched.some((m) => m.part.gpn === r.part.gpn)
     )];
-    const ranked = rankResults(combined);
+    const ranked = rankResults(combined, (gpn) => annualQtyOf(VOLUMES, gpn));
     setResults(ranked);
-    const anyGood = ranked.some((r) => r.verdict === 'match' || r.verdict === 'review');
+    const anyGood = ranked.some((r) => r.verdict !== 'different');
     setScreen(anyGood ? 'results' : 'deadEnd');
   }, [state.query]);
 
