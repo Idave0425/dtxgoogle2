@@ -16,7 +16,7 @@ export function Shortlist() {
     <section className="panel shortlist" aria-label="Parts that fit so far">
       <header className="panel-head">
         <h2>Already in the catalogue</h2>
-        {total > 0 ? <span className="muted num">{total} fit · pcs / yr</span> : null}
+        {total > 0 ? <span className="muted num">{total} fit</span> : null}
       </header>
       {rows.length === 0 ? (
         <p className="empty-line">
@@ -34,7 +34,16 @@ export function Shortlist() {
                 <div className="sl-line1">
                   <span className="mono">{r.part.gpn}</span>
                   <VerdictBadge verdict={r.verdict} />
-                  <span className="sl-vol num">{v ? formatQty(v.annualQty) : '—'}</span>
+                  <span className="sl-vol num" title={v ? `${v.annualQty.toLocaleString()} pieces ordered per year` : undefined}>
+                    {v ? (
+                      <>
+                        {formatQty(v.annualQty)}
+                        <span className="unit"> pcs/yr</span>
+                      </>
+                    ) : (
+                      <span className="unit">volume pending</span>
+                    )}
+                  </span>
                 </div>
                 <div className="sl-line2">
                   <span className="sl-desc">{r.part.description}</span>

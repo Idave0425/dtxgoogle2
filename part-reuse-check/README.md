@@ -26,7 +26,8 @@ That is the whole setup. The fixture is committed, so you can skip
 | `npm run dev`          | Vite dev server at `http://127.0.0.1:5173/`           |
 | `npm run build`        | type-check + production bundle in `dist/`             |
 | `npm test`             | Vitest unit + integration suite                       |
-| `npm run build:fixture`| Rebuild the demo fixture (incl. **sample** volumes)   |
+| `npm run build:fixture`| Rebuild the demo fixture (volume **pending**)         |
+| `npm run build:fixture:sample` | Demo fixture with proof-of-concept sample volumes |
 | `npm run build:fixture:real` | Real ETL from `data/*.csv` (+ optional `data/volumes.csv`) |
 
 ## What this prototype is not
@@ -79,8 +80,11 @@ Results are ranked **match → lifecycle → volume**. The highest-volume match
 or close match is shown as the **preferred part**. Parts with no order data
 show **volume pending** and rank after parts with data, never as zero.
 
-The committed demo fixture uses **sample** volumes, labelled as such in the
-UI. Google hasn't shared vendor data yet. To load real data, add
+Google hasn't shared vendor order data yet, so the committed fixture has none
+and every part reads **volume pending**. No numbers are made up. To demo the
+volume features (ranking, preferred part, high runners, pack-variant totals)
+with clearly labelled sample numbers, run `npm run build:fixture:sample`. To
+load real data, add
 `data/volumes.csv` (`GPN,Annual Qty,Orders[,As Of]`) and run
 `npm run build:fixture:real`. Full details: `docs/CHANGES-WEEK3.md`.
 
@@ -124,21 +128,23 @@ Run a query that returns `07070024`.
 > wording that explicitly says the members **may** describe the same part —
 > never "duplicate confirmed".
 
-### 6. Volume and near-match (new)
+### 6. Near-match (new)
 
 Family **screw** → Thread **M3** → Pitch **0.5** → Length: type **5.4** →
 skip the rest → Search.
 
-> Expected: `12345007` (5.4 mm, 600 / yr) is the **Match**; `12345006`
-> (5.5 mm, 26k / yr) is a **Close match**, tagged High runner and shown as the
-> **Preferred part**, "about 43× the next option".
+> Expected: `12345007` (5.4 mm) is the **Match**; `12345006` (5.5 mm) is a
+> **Close match**. Volume reads **pending** on both.
+>
+> With `npm run build:fixture:sample`, `12345006` (26k / yr) also becomes the
+> **Preferred part**, tagged High runner.
 
 ### 7. Pack variant (new)
 
 Run the happy path and expand `07052664`.
 
-> Expected: a **Pack variant** notice pairing it with `07052665` (100-pack),
-> each member's volume, and the combined 70k / yr.
+> Expected: a **Pack variant** notice pairing it with `07052665` (100-pack).
+> Combined volume reads pending; with sample volumes it reads 70k / yr.
 
 ### 8. Dead end
 

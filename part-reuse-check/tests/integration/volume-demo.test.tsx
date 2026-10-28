@@ -36,7 +36,7 @@ function rowOrder(): string[] {
 }
 
 describe('volume demo', () => {
-  it('happy path ranks the high runner first and marks it preferred', () => {
+  it('happy path: volume reads pending, nothing is preferred or invented', () => {
     setup();
     pick('screw');
     pick('M3');
@@ -46,14 +46,16 @@ describe('volume demo', () => {
     pick('phillips');
     skipRestAndSearch();
 
-    expect(rowOrder()[0]).toBe('07052664');
-    expect(within(document.getElementById('row-07052664')!).getByText('Preferred')).toBeTruthy();
-    expect(document.querySelector('.title-sub')!.textContent).toMatch(/07052664 is ordered most/);
-    expect(screen.getByText(/proof-of-concept sample data, not Google order history/)).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Copy 07052664' })).toBeTruthy();
+    expect(rowOrder()).toContain('07052664');
+    expect(screen.getByText(/Volume pending: waiting on vendor order data from Google/)).toBeTruthy();
+    expect(screen.queryByText('Preferred')).toBeNull();
+    expect(screen.queryByText('High runner')).toBeNull();
+    const vols = Array.from(document.querySelectorAll('.row-result .col-vol')).map((c) => c.textContent);
+    expect(vols.every((v) => v === 'pending')).toBe(true);
+    expect(document.querySelector('.title-sub')!.textContent).not.toMatch(/ordered most/);
   });
 
-  it('a 5.4 mm search surfaces the 5.5 mm high runner as a close match', () => {
+  it('a 5.4 mm search still surfaces the 5.5 mm part as a close match', () => {
     setup();
     pick('screw');
     pick('M3');
@@ -64,8 +66,6 @@ describe('volume demo', () => {
     expect(rowOrder()).toEqual(['12345007', '12345006']);
     const row = document.getElementById('row-12345006')!;
     expect(within(row).getByText('Close match')).toBeTruthy();
-    expect(within(row).getByText('Preferred')).toBeTruthy();
-    expect(document.querySelector('.title-sub')!.textContent).toMatch(/close match: length 5\.5 mm, you asked 5\.4 mm/);
   });
 
   it('a typed pitch with no exact match still dead-ends in strict mode', () => {

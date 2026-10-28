@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "build:fixture": "tsx scripts/build-dummy.ts",
+    "build:fixture:sample": "tsx scripts/build-dummy.ts --sample-volumes",
     "build:fixture:real": "tsx scripts/build-fixture.ts"
   },
   "dependencies": {

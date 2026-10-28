@@ -89,9 +89,9 @@ export function ResultsScreen() {
         sub={sub}
         source={
           selectVolumeSource() === 'sample'
-            ? 'Order volumes are proof-of-concept sample data, not Google order history.'
+            ? 'Order volumes are proof-of-concept sample data. Real vendor volumes are pending from Google.'
             : selectVolumeSource() === 'none'
-            ? 'Order volume pending: vendor data not loaded yet.'
+            ? 'Volume pending: waiting on vendor order data from Google.'
             : undefined
         }
         actions={

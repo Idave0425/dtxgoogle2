@@ -15,15 +15,18 @@ engineers at "preferred" high-runner parts so usage consolidates.
 | `source` | Meaning | UI |
 | --- | --- | --- |
 | `vendor` | Real order history from Google's vendors | numbers shown as-is |
-| `sample` | Illustrative numbers in the demo fixture | purple "Sample volumes" note on Results; "sample volume" on the preferred card |
+| `sample` | Illustrative numbers in the demo fixture | a "proof-of-concept sample data" line under the Results title |
 | `none` | No data yet | every part reads **volume pending**; no preferred part |
 
-- **Current approach (team decision):** volume is artificial proof-of-concept
-  data attached to the dummy dataset, and every volume feature is built on it.
-  `npm run build:fixture` (demo) writes `sample` volumes for 35 of 38 GPNs.
-  Three are left out on purpose so the "pending" state is visible (Google said
-  ~85% coverage is acceptable).
-- Fallback, not the focus yet: `npm run build:fixture:real` reads an optional `data/volumes.csv`
+- **Current default: volume pending.** Per the 3.2 doc, no numbers are made
+  up while Google's vendor data is outstanding. `npm run build:fixture` writes
+  `source: 'none'`, and every part reads "volume pending".
+- **Proof of concept on demand:** `npm run build:fixture:sample` writes
+  illustrative `sample` volumes for 35 of 38 GPNs, so the ranking, preferred
+  part, high runners and pack-variant totals can be demoed. Three are left out
+  on purpose to show the pending state (Google said ~85% coverage is
+  acceptable).
+- Real data: `npm run build:fixture:real` reads an optional `data/volumes.csv`
   (`GPN,Annual Qty,Orders[,As Of]`). With no file it writes `source: 'none'`.
   Missing GPNs stay pending. Gaps are **never** filled with estimates.
 

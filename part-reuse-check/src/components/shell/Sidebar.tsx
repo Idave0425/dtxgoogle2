@@ -59,7 +59,6 @@ export function Sidebar() {
         <ProductMark />
         <span className="product-text">
           <strong>Part Reuse Check</strong>
-          <span>Fasteners · Oct 2026</span>
         </span>
       </button>
 

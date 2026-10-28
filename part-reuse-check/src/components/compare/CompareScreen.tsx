@@ -32,8 +32,6 @@ export function CompareScreen() {
     (s) => (a.attributes as any)[s.key] !== (b.attributes as any)[s.key]
   ).length;
   const verdictOf = (gpn: string) => state.results?.find((r) => r.part.gpn === gpn)?.verdict;
-  const unknowns = (p: PartRecord) =>
-    steps.filter((s) => (p.attributes as any)[s.key] === null).length;
 
   function volumeText(p: PartRecord) {
     const v = selectVolume(p.gpn);
@@ -98,20 +96,6 @@ export function CompareScreen() {
           </tbody>
         </table>
       </div>
-
-      <ul className="compare-conclusions">
-        {[a, b].map((p) => {
-          const n = unknowns(p);
-          return (
-            <li key={p.gpn} className="panel">
-              <span className="mono strong">{p.gpn}</span>
-              {n > 0
-                ? `: ${n} unknown${n === 1 ? '' : 's'}. Needs a manufacturer catalogue page or engineering sign-off to clear.`
-                : ': fully specified for this family.'}
-            </li>
-          );
-        })}
-      </ul>
     </>
   );
 }

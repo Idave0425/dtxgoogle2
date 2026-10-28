@@ -287,7 +287,7 @@ export function ResultsTable({
         </span>
         {rows.some((r) => !selectVolume(r.part.gpn).record) ? (
           <span className="muted small">
-            Pending volume has no order data yet and ranks after known volume.
+            Volume pending until Google's vendor order data arrives.
           </span>
         ) : null}
       </div>

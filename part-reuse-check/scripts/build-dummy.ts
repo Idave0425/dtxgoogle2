@@ -466,11 +466,15 @@ writeFileSync(
   resolve(outDir, 'clusters.json'),
   JSON.stringify(clusters, null, 2)
 );
+// Default is "volume pending" (Week 3 doc: no made-up numbers until Google's
+// vendor data arrives). `--sample-volumes` writes the proof-of-concept numbers
+// instead, to demo ranking, preferred parts and pack-variant totals.
+const withSamples = process.argv.includes('--sample-volumes');
 const volumes: VolumeFixture = {
-  source: 'sample',
+  source: withSamples ? 'sample' : 'none',
   asOf: null,
   byGpn: Object.fromEntries(
-    Object.entries(SAMPLE_VOLUMES)
+    Object.entries(withSamples ? SAMPLE_VOLUMES : {})
       .filter(([gpn]) => parts.some((p) => p.gpn === gpn))
       .sort(([a], [b]) => a.localeCompare(b))
       .map(([gpn, [annualQty, orders]]) => [gpn, { annualQty, orders }])
@@ -495,6 +499,10 @@ console.log(`clusters      : ${clusters.length}`);
 console.log(`  shared-mpn            : ${clusters.filter((c) => c.evidence === 'shared-mpn').length}`);
 console.log(`  identical-description : ${clusters.filter((c) => c.evidence === 'identical-description').length}`);
 console.log(`  pack-variant          : ${clusters.filter((c) => c.evidence === 'pack-variant').length}`);
-console.log(`sample volumes: ${Object.keys(volumes.byGpn).length}/${parts.length} GPNs`);
+console.log(
+  withSamples
+    ? `sample volumes: ${Object.keys(volumes.byGpn).length}/${parts.length} GPNs`
+    : 'volumes       : pending (run with --sample-volumes for proof-of-concept data)'
+);
 console.log('wrote src/fixtures/{parts,vocab,clusters,volumes}.json');
 console.log('');
