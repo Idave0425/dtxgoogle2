@@ -41,7 +41,6 @@ export function ScopeStep() {
         index={state.stepIndex}
         total={steps.length}
         title="Which parts should we search?"
-        help='Defaults fit the common "designing something new" case: active parts only, no kits.'
       />
 
       <div className="scope-groups">
@@ -77,7 +76,6 @@ export function ScopeStep() {
           <span className="switch" aria-hidden="true" />
           <span>
             <strong>Include kits</strong>
-            <small>Fasteners bundled with brackets or other hardware.</small>
           </span>
         </label>
         <label className="switch-row">
@@ -90,12 +88,7 @@ export function ScopeStep() {
           />
           <span className="switch" aria-hidden="true" />
           <span>
-            <strong>Strict mode</strong>
-            <small>
-              Hide parts that don't state something you asked for. Shorter list,
-              but it hides exactly the poorly-described duplicates this tool
-              exists to find.
-            </small>
+            <strong>Hide parts with unknown specs</strong>
           </span>
         </label>
       </div>

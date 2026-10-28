@@ -1,5 +1,5 @@
 import { useAppState } from '../../state/context';
-import { selectAllParts, selectCurrentStep } from '../../state/selectors';
+import { selectCurrentStep } from '../../state/selectors';
 import { AttributeStep } from './AttributeStep';
 import { ReviewStep } from './ReviewStep';
 import { ScopeStep } from './ScopeStep';
@@ -15,7 +15,6 @@ export function WizardScreen() {
     <>
       <TitleRow
         title="Find a fastener"
-        sub={`Check the ${selectAllParts().length} existing GPNs before creating a new one. Answer what you know; skipped steps never count as a match.`}
       />
       <div className="wizard">
         <div className="wizard-main">

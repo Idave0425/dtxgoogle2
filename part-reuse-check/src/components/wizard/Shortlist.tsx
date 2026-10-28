@@ -16,7 +16,7 @@ export function Shortlist() {
     <section className="panel shortlist" aria-label="Parts that fit so far">
       <header className="panel-head">
         <h2>Already in the catalogue</h2>
-        <span className="muted num">{total} fit so far</span>
+        {total > 0 ? <span className="muted num">{total} fit · pcs / yr</span> : null}
       </header>
       {rows.length === 0 ? (
         <p className="empty-line">
@@ -48,9 +48,8 @@ export function Shortlist() {
         </ol>
       )}
       {total > rows.length ? (
-        <p className="panel-foot muted">and {total - rows.length} more. Run the search to see all.</p>
+        <p className="panel-foot muted">+{total - rows.length} more</p>
       ) : null}
-      <p className="panel-foot muted small">Volume in pcs / yr. Ranked by match, lifecycle, then volume.</p>
     </section>
   );
 }

@@ -208,7 +208,6 @@ h1 .mono { font-size: 22px; }
 .step-title-line { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 .step-prompt { font-size: 20px; line-height: 28px; font-weight: 500; }
 .step-count { font-size: 13px; color: var(--muted); }
-.step-help { margin-top: 4px; color: var(--muted); max-width: 62ch; }
 
 .combobox { padding: 0 var(--pad) 20px; }
 .combobox-field { position: relative; display: flex; align-items: center; }

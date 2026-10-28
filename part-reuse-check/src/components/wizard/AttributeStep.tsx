@@ -32,13 +32,13 @@ export function AttributeStep() {
         index={state.stepIndex}
         total={isFamily ? null : steps.length}
         title={step.prompt}
-        help={step.help}
       />
 
       <OptionCombobox
         options={options}
         value={current}
         customUnit={step.kind === 'numeric' ? step.unit : undefined}
+        renderCount={isFamily ? (o) => `${o.count}/${counts.total}` : undefined}
         customHint={
           step.nearTolerance
             ? 'parts within ~3% show as close matches'
@@ -63,8 +63,7 @@ export function AttributeStep() {
       <footer className="step-footer">
         {isFamily ? (
           <p className="step-foot-note">
-            {counts.total} fasteners in scope. Counts on the right show how many
-            parts state each value.
+            <strong className="num">{counts.total}</strong> total fasteners
           </p>
         ) : (
           <PoolMeter exact={counts.exact} near={counts.near} unknown={counts.unknown} />

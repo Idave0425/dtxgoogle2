@@ -18,7 +18,6 @@ export function ReviewStep() {
         index={state.stepIndex}
         total={steps.length}
         title="Review and search"
-        help="Click any row to change it. Skipped attributes apply no filter."
       />
 
       <ul className="review-list">
@@ -62,8 +61,7 @@ export function ReviewStep() {
 
       <footer className="step-footer">
         <p className="step-foot-note">
-          <strong>{counts.total}</strong> candidate{counts.total === 1 ? '' : 's'}.
-          Results are ranked by match quality, then lifecycle, then order volume.
+          <strong className="num">{counts.total}</strong> candidate{counts.total === 1 ? '' : 's'}
         </p>
         <div className="step-controls">
           <button className="btn btn-ghost" onClick={() => dispatch({ type: 'BACK' })}>

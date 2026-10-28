@@ -2,13 +2,11 @@ export function StepHeader({
   index,
   total,
   title,
-  help,
 }: {
   index: number;
   /** null before the family is chosen: the step count isn't known yet. */
   total: number | null;
   title: string;
-  help: string;
 }) {
   return (
     <header className="step-header">
@@ -20,7 +18,6 @@ export function StepHeader({
           </span>
         ) : null}
       </div>
-      {help ? <p className="step-help">{help}</p> : null}
     </header>
   );
 }

@@ -78,7 +78,7 @@ describe('volume demo', () => {
       fireEvent.click(skip);
       skip = screen.queryByRole('button', { name: 'Skip this step' });
     }
-    fireEvent.click(screen.getByText('Strict mode'));
+    fireEvent.click(screen.getByText('Hide parts with unknown specs'));
     fireEvent.click(screen.getByRole('button', { name: 'Continue' }));
     fireEvent.click(screen.getByRole('button', { name: 'Search parts' }));
     expect(document.querySelector('.title-sub')!.textContent).toMatch(/No existing GPN fits/);
