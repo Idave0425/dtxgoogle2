@@ -13,7 +13,7 @@ export function ReviewStep() {
   );
 
   return (
-    <section className="card step">
+    <section className="panel step">
       <StepHeader
         index={state.stepIndex}
         total={steps.length}

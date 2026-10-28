@@ -36,7 +36,7 @@ export function ScopeStep() {
   }
 
   return (
-    <section className="card step">
+    <section className="panel step">
       <StepHeader
         index={state.stepIndex}
         total={steps.length}
@@ -48,7 +48,7 @@ export function ScopeStep() {
         {PHASE_GROUPS.map((g) => (
           <fieldset key={g.title} className="scope-group">
             <legend>
-              {g.title} <span>{g.note}</span>
+              {g.title} <span>· {g.note}</span>
             </legend>
             <div className="chip-row">
               {g.phases.map((p) => {

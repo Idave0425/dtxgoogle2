@@ -17,6 +17,7 @@ import { REVIEW_STEP_KEY, SCOPE_STEP_KEY } from '../../engine/steps';
 import { VerdictBadge } from '../common/VerdictBadge';
 import { TierTag, VolumeCell } from '../volume/VolumeCell';
 import { DuplicateNotice } from './DuplicateNotice';
+import { Icon, VerdictMark } from '../common/Icon';
 import { clusterLabel } from './clusterLabel';
 
 interface Props {
@@ -27,9 +28,8 @@ interface Props {
   maxVolume: number;
   expanded: Set<string>;
   onToggle: (gpn: string) => void;
+  emptyText: string;
 }
-
-const MARK = { match: '✓', near: '≈', differs: '✕', unknown: '?', 'not-asked': '·' } as const;
 
 function formatValue(v: string | number | null, unit?: 'mm'): string {
   if (v === null || v === undefined) return '—';
@@ -45,6 +45,7 @@ export function ResultsTable({
   maxVolume,
   expanded,
   onToggle,
+  emptyText,
 }: Props) {
   const state = useAppState();
   const dispatch = useDispatch();
@@ -69,7 +70,7 @@ export function ResultsTable({
         className={`rt-cell rt-${cmp.verdict}`}
         title={`${labelFor(col.key)}: ${display}`}
       >
-        <span className="rt-mark" aria-hidden="true">{MARK[cmp.verdict]}</span>
+        <VerdictMark verdict={cmp.verdict} />
         <span className="rt-val">{display}</span>
       </td>
     );
@@ -78,7 +79,7 @@ export function ResultsTable({
   const totalCols = 6 + columns.length;
 
   return (
-    <div className="table-wrap card">
+    <div className="table-wrap panel">
       <table className="results-table">
         <thead>
           <tr>
@@ -86,9 +87,7 @@ export function ResultsTable({
             <th className="col-gpn">GPN</th>
             <th className="col-verdict">Verdict</th>
             <th className="col-phase">Lifecycle</th>
-            <th className="col-vol">
-              Volume <span className="th-sub">pcs / yr</span>
-            </th>
+            <th className="col-vol num">Volume, pcs / yr</th>
             {columns.map((c) => {
               const ask = askedLabel(c);
               return (
@@ -105,9 +104,7 @@ export function ResultsTable({
           {rows.length === 0 ? (
             <tr>
               <td colSpan={totalCols} className="empty-cell">
-                No matches or review candidates. Try loosening a step. Pitch,
-                finish and built-in washer are stated by only a minority of
-                records.
+                {emptyText}
               </td>
             </tr>
           ) : null}
@@ -145,8 +142,15 @@ export function ResultsTable({
                     >
                       {gpn}
                     </button>
+                    {r.exclusionReason ? (
+                      <span className="row-reason">{r.exclusionReason}</span>
+                    ) : null}
                     <span className="tags">
-                      {gpn === preferred ? <span className="tag tag-preferred">★ Preferred</span> : null}
+                      {gpn === preferred ? (
+                        <span className="tag tag-preferred">
+                          <Icon name="star" size={12} /> Preferred
+                        </span>
+                      ) : null}
                       <TierTag gpn={gpn} />
                       {myClusters.map((c) => {
                         const label = clusterLabel(
@@ -180,9 +184,7 @@ export function ResultsTable({
                       aria-expanded={isExpanded}
                       aria-label={isExpanded ? 'Hide details' : 'Show details'}
                     >
-                      <svg viewBox="0 0 16 16" aria-hidden="true">
-                        <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
+                      <Icon name="chevron" />
                     </button>
                   </td>
                 </tr>
@@ -276,12 +278,19 @@ export function ResultsTable({
           })}
         </tbody>
       </table>
-      {rows.some((r) => !selectVolume(r.part.gpn).record) ? (
-        <p className="table-foot muted small">
-          “pending” = no order data for that GPN yet. Pending volume ranks after
-          known volume, never as zero.
-        </p>
-      ) : null}
+      <div className="table-foot">
+        <span className="legend">
+          <span><VerdictMark verdict="match" /> states your value</span>
+          <span><VerdictMark verdict="near" /> close</span>
+          <span><VerdictMark verdict="unknown" /> doesn't say</span>
+          <span><VerdictMark verdict="differs" /> states a different value</span>
+        </span>
+        {rows.some((r) => !selectVolume(r.part.gpn).record) ? (
+          <span className="muted small">
+            Pending volume has no order data yet and ranks after known volume.
+          </span>
+        ) : null}
+      </div>
     </div>
   );
 }

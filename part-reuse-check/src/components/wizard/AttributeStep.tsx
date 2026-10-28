@@ -27,7 +27,7 @@ export function AttributeStep() {
     answer?.state === 'answered' ? (answer.value as string | number) : null;
 
   return (
-    <section className="card step">
+    <section className="panel step">
       <StepHeader
         index={state.stepIndex}
         total={isFamily ? null : steps.length}
@@ -86,7 +86,7 @@ export function AttributeStep() {
               onClick={() => dispatch({ type: 'SKIP', key: step.key })}
               title="Skipping applies no filter. It is never treated as a match."
             >
-              Skip — I don't know
+              Skip this step
             </button>
           ) : null}
           {canJumpToReview ? (

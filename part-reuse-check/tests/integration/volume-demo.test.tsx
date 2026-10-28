@@ -20,10 +20,10 @@ function pick(text: string) {
 }
 
 function skipRestAndSearch() {
-  let skip = screen.queryByRole('button', { name: /^skip —/i });
+  let skip = screen.queryByRole('button', { name: 'Skip this step' });
   while (skip) {
     fireEvent.click(skip);
-    skip = screen.queryByRole('button', { name: /^skip —/i });
+    skip = screen.queryByRole('button', { name: 'Skip this step' });
   }
   fireEvent.click(screen.getByRole('button', { name: 'Continue' }));
   fireEvent.click(screen.getByRole('button', { name: 'Search parts' }));
@@ -47,9 +47,10 @@ describe('volume demo', () => {
     skipRestAndSearch();
 
     expect(rowOrder()[0]).toBe('07052664');
-    const preferred = screen.getByLabelText('Preferred part');
-    expect(within(preferred).getByText('07052664')).toBeTruthy();
-    expect(screen.getByText(/Sample volumes\./)).toBeTruthy();
+    expect(within(document.getElementById('row-07052664')!).getByText('Preferred')).toBeTruthy();
+    expect(document.querySelector('.title-sub')!.textContent).toMatch(/07052664 is ordered most/);
+    expect(screen.getByText(/proof-of-concept sample data, not Google order history/)).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Copy 07052664' })).toBeTruthy();
   });
 
   it('a 5.4 mm search surfaces the 5.5 mm high runner as a close match', () => {
@@ -63,7 +64,8 @@ describe('volume demo', () => {
     expect(rowOrder()).toEqual(['12345007', '12345006']);
     const row = document.getElementById('row-12345006')!;
     expect(within(row).getByText('Close match')).toBeTruthy();
-    expect(within(screen.getByLabelText('Preferred part')).getByText('12345006')).toBeTruthy();
+    expect(within(row).getByText('Preferred')).toBeTruthy();
+    expect(document.querySelector('.title-sub')!.textContent).toMatch(/close match: length 5\.5 mm, you asked 5\.4 mm/);
   });
 
   it('a typed pitch with no exact match still dead-ends in strict mode', () => {
@@ -71,14 +73,14 @@ describe('volume demo', () => {
     pick('screw');
     pick('M3');
     pick('0.35');
-    let skip = screen.queryByRole('button', { name: /^skip —/i });
+    let skip = screen.queryByRole('button', { name: 'Skip this step' });
     while (skip) {
       fireEvent.click(skip);
-      skip = screen.queryByRole('button', { name: /^skip —/i });
+      skip = screen.queryByRole('button', { name: 'Skip this step' });
     }
     fireEvent.click(screen.getByText('Strict mode'));
     fireEvent.click(screen.getByRole('button', { name: 'Continue' }));
     fireEvent.click(screen.getByRole('button', { name: 'Search parts' }));
-    expect(screen.getByText('No existing part matched')).toBeTruthy();
+    expect(document.querySelector('.title-sub')!.textContent).toMatch(/No existing GPN fits/);
   });
 });

@@ -1,7 +1,6 @@
 import type { Answer, PartRecord, StepDefinition } from '../../types';
 import { compareAttribute, labelFor } from '../../engine/match';
-
-const MARK = { match: '✓', near: '≈', differs: '✕', unknown: '?', 'not-asked': '·' } as const;
+import { VerdictMark } from '../common/Icon';
 
 export function CompareRow({
   step,
@@ -28,7 +27,7 @@ export function CompareRow({
       found === null ? "doesn't say" : String(found) + (step.unit === 'mm' ? ' mm' : '');
     return (
       <span className={`cmp-cell rt-${cmp.verdict}`}>
-        <span className="rt-mark" aria-hidden="true">{MARK[cmp.verdict]}</span>
+        <VerdictMark verdict={cmp.verdict} />
         {show}
       </span>
     );

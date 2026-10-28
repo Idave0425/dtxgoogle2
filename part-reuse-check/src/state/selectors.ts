@@ -11,6 +11,8 @@ import type {
 } from '../types';
 import { filterCandidates, optionsForStep, poolCounts } from '../engine/candidates';
 import { stepsFor } from '../engine/steps';
+import { matchAll } from '../engine/match';
+import { rankResults } from '../engine/rank';
 import { ALL_PARTS, CLUSTERS, VOCAB, VOLUMES } from './context';
 import { preferredGpn, volumeOf, volumeTier } from '../engine/volume';
 
@@ -105,4 +107,50 @@ export function selectFurthestReachable(state: AppState): number {
     if (!a || a.state === 'pending') return Math.max(i, state.stepIndex);
   }
   return steps.length - 1;
+}
+
+// ---------- titles and shortlist (UI refresh) ----------
+
+/**
+ * The query as the engineer would say it: "M3 × 0.5 × 8 mm pan phillips screw".
+ * Used as the results h1, so the screen is named after the part, not "Results".
+ */
+export function selectQuerySummary(state: AppState): string {
+  const a = state.query.answers;
+  const v = (k: AttributeKey) => (a[k]?.state === 'answered' ? a[k]!.value : null);
+  const family = (v('family') as string | null) ?? 'fastener';
+  const size = v('threadSize') ?? v('fitsScrewSize');
+  const dims: string[] = [];
+  if (size !== null) dims.push(String(size));
+  if (v('threadPitchMm') !== null) dims.push(String(v('threadPitchMm')));
+  if (v('lengthMm') !== null) dims.push(`${v('lengthMm')} mm`);
+  const sizePart = dims.join(' × ');
+  const washerDims = (
+    [
+      ['innerDiameterMm', 'ID'],
+      ['outerDiameterMm', 'OD'],
+      ['thicknessMm', 'thick'],
+    ] as const
+  )
+    .filter(([k]) => v(k) !== null)
+    .map(([k, l]) => `${v(k)} mm ${l}`);
+  const words = (
+    ['headType', 'driveType', 'washerStyle', 'material', 'finish'] as AttributeKey[]
+  )
+    .map((k) => v(k))
+    .filter((x): x is string => typeof x === 'string');
+  const head = [sizePart, ...words, family].filter(Boolean).join(' ');
+  return washerDims.length ? `${head}, ${washerDims.join(', ')}` : head;
+}
+
+/** Live shortlist for the wizard: what already fits the answers so far. */
+export function selectShortlist(state: AppState, limit = 5) {
+  const family = selectFamily(state);
+  if (!family) return { total: 0, rows: [] as ReturnType<typeof rankResults> };
+  const steps = stepsFor(family);
+  const pool = filterCandidates(ALL_PARTS, state.query);
+  const ranked = rankResults(matchAll(pool, state.query, steps), (g) =>
+    volumeOf(VOLUMES, g)?.annualQty ?? null
+  ).filter((r) => r.verdict !== 'different');
+  return { total: ranked.length, rows: ranked.slice(0, limit) };
 }

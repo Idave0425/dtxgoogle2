@@ -1,10 +1,10 @@
-// Volume display. Week 3 feedback: rank by volume, highlight high runners,
-// and say "volume pending" rather than invent a number.
+// Volume display. Rank by volume, mark high runners, and say "pending"
+// rather than invent a number.
 
 import { formatQty, TIER_LABEL } from '../../engine/volume';
-import { selectVolume, selectVolumeSource } from '../../state/selectors';
+import { selectVolume } from '../../state/selectors';
 
-/** Bar + quantity, scaled against `max` (the largest volume on screen). */
+/** Right-aligned quantity with a thin bar in the one data hue, scaled to `max`. */
 export function VolumeCell({ gpn, max }: { gpn: string; max: number }) {
   const { record, tier } = selectVolume(gpn);
   if (!record) {
@@ -25,7 +25,7 @@ export function VolumeCell({ gpn, max }: { gpn: string; max: number }) {
       <span className="vol-bar" aria-hidden="true">
         <span className="vol-fill" style={{ width: `${pct}%` }} />
       </span>
-      <span className="vol-num">{formatQty(record.annualQty)}</span>
+      <span className="vol-num num">{formatQty(record.annualQty)}</span>
     </span>
   );
 }
@@ -33,24 +33,5 @@ export function VolumeCell({ gpn, max }: { gpn: string; max: number }) {
 export function TierTag({ gpn }: { gpn: string }) {
   const { tier } = selectVolume(gpn);
   if (tier !== 'high-runner') return null;
-  return <span className="tag tag-runner">High runner</span>;
-}
-
-/** One line telling the engineer where volume numbers come from. */
-export function VolumeSourceNote() {
-  const source = selectVolumeSource();
-  if (source === 'vendor') return null;
-  return source === 'sample' ? (
-    <p className="source-note source-sample" role="note">
-      <strong>Sample volumes.</strong> Proof-of-concept data attached to the demo
-      dataset, not real order history. It shows how volume ranking, preferred
-      parts and pack-variant totals will work once vendor data arrives.
-    </p>
-  ) : (
-    <p className="source-note source-none" role="note">
-      <strong>Volume pending.</strong> Vendor order data hasn't arrived yet.
-      Results are ranked by match quality and lifecycle; volume will slot in
-      once data is loaded.
-    </p>
-  );
+  return <span className="tag">High runner</span>;
 }

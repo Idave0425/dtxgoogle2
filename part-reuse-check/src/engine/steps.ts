@@ -9,7 +9,7 @@ export const FAMILY_STEP: StepDefinition = {
   key: 'family',
   prompt: 'What kind of fastener are you looking for?',
   help:
-    'Pick the broad family. This decides which attributes we ask you about next — a washer has no head, a screw has no outer diameter.',
+    'Pick the broad family. This decides which attributes we ask about next: a washer has no head, a screw has no outer diameter.',
   kind: 'enum',
   disqualifying: true,
 };
@@ -57,15 +57,15 @@ const S = (
 });
 
 const SCREW_STEPS: StepDefinition[] = [
-  S('threadSize', 'Thread size?', 'Metric like M3 or imperial like 10-32. We only match what the record actually says — a diameter without a thread designation is unknown.', 'enum', true),
-  S('threadPitchMm', 'Thread pitch?', 'Only 11% of screw records state a pitch. Skip if you do not know it — we will not assume the standard value.', 'numeric', true, 'mm'),
+  S('threadSize', 'Thread size?', 'Metric like M3 or imperial like 10-32. We only match what the record actually says. A diameter without a thread designation is unknown.', 'enum', true),
+  S('threadPitchMm', 'Thread pitch?', 'Only 11% of screw records state a pitch. Skip if you do not know it; we never assume the standard value.', 'numeric', true, 'mm'),
   S('lengthMm', 'Length?', 'Normalised to millimetres (5/8 inch = 15.875 mm). Type any value; parts within ~3% show up as close matches with their volume.', 'numeric', true, 'mm'),
   S('headType', 'Head type?', 'Pan, flat, socket, hex, truss, button, cap, oval, round, flange, low profile, washer head.', 'enum', true),
   S('driveType', 'Drive type?', 'Phillips, hex, Torx, square, slotted, combo. Torx bit size (T10/T20) is captured but not a filter.', 'enum', true),
   S('material', 'Material?', 'Stainless steel vs plain steel is a real difference. 18-8 / 304 / 316 / A2 / A4 are all stainless and merge for search; the grade shows on the result row.', 'enum', true),
-  S('finish', 'Finish?', 'Zinc plated, black oxide, passivated and so on. A bare "BLACK" in the description shows up as "black (unspecified)" — it is a colour claim, not a finish spec.', 'enum', true),
+  S('finish', 'Finish?', 'Zinc plated, black oxide, passivated and so on. A bare "BLACK" in the description shows up as "black (unspecified)" because it is a colour claim, not a finish spec.', 'enum', true),
   S('integralWasher', 'Does it need a built-in washer?', 'Many records bundle a split-lock or external-tooth washer into the part. Choose a style you need, or skip if plain-is-fine.', 'enum', true),
-  S('gradeClass', 'Grade / strength class?', 'Grade 5, Grade 8, Class 8.8… — barely stated in the database, so this step does NOT disqualify records that leave it blank.', 'enum', false),
+  S('gradeClass', 'Grade / strength class?', 'Grade 5, Grade 8, Class 8.8. Rarely stated in the database, so this step does not disqualify records that leave it blank.', 'enum', false),
 ];
 
 const NUT_STEPS: StepDefinition[] = [

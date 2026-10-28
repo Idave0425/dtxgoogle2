@@ -9,7 +9,7 @@ export function NewGpnRequest() {
 
   const text = useMemo(() => {
     const lines: string[] = [];
-    lines.push('Part Reuse Check — New GPN request (mock)');
+    lines.push('Part Reuse Check: new GPN request (mock)');
     lines.push('Generated: ' + new Date().toISOString());
     lines.push('');
     lines.push('Query:');
@@ -32,7 +32,7 @@ export function NewGpnRequest() {
     const rejected = state.results?.filter((r) => r.verdict === 'different') ?? [];
     if (rejected.length === 0) lines.push('  (none)');
     for (const r of rejected.slice(0, 10)) {
-      lines.push(`  ${r.part.gpn} — ${r.exclusionReason}`);
+      lines.push(`  ${r.part.gpn}: ${r.exclusionReason}`);
     }
     lines.push('');
     lines.push('NOTE: This request is NOT submitted anywhere. Copy and send to a human.');
@@ -49,20 +49,20 @@ export function NewGpnRequest() {
   }
 
   return (
-    <div className="new-gpn card">
-      <div className="new-gpn-head">
-        <h3>Draft new-GPN request</h3>
-        <button className="btn btn-secondary btn-sm" onClick={copy}>
-          Copy to clipboard
+    <section className="panel new-gpn" aria-label="New GPN request">
+      <header className="panel-head">
+        <h2>Draft new-GPN request</h2>
+        <button className="btn btn-primary btn-sm" onClick={copy}>
+          {copied === 'Copied to clipboard.' ? 'Copied' : 'Copy request'}
         </button>
-      </div>
+      </header>
       <pre className="new-gpn-body" tabIndex={0}>
         {text}
       </pre>
-      {copied ? <p className="new-gpn-copied">{copied}</p> : null}
-      <p className="new-gpn-nope">
-        <strong>Not sent anywhere.</strong> The prototype has no backend.
+      <p className="panel-foot muted small">
+        {copied && copied !== 'Copied to clipboard.' ? copied + ' ' : ''}
+        Not sent anywhere. The prototype has no backend; paste it to the data owner.
       </p>
-    </div>
+    </section>
   );
 }

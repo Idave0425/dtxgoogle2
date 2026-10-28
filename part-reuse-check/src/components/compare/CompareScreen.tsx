@@ -5,6 +5,7 @@ import { REVIEW_STEP_KEY, SCOPE_STEP_KEY } from '../../engine/steps';
 import { formatQty, TIER_LABEL } from '../../engine/volume';
 import { VerdictBadge } from '../common/VerdictBadge';
 import type { PartRecord } from '../../types';
+import { TitleRow } from '../shell/TitleRow';
 
 export function CompareScreen() {
   const state = useAppState();
@@ -19,14 +20,17 @@ export function CompareScreen() {
 
   if (!a || !b) {
     return (
-      <div className="empty-state card">
-        <h2>Pick two parts to compare</h2>
-        <p className="muted">Tick two rows on the Results screen, then come back here.</p>
-        <button className="btn btn-primary" onClick={back}>Back to results</button>
-      </div>
+      <TitleRow
+        title="Compare"
+        sub="Tick two rows on the results screen to compare them here."
+        actions={<button className="btn btn-secondary" onClick={back}>Back to results</button>}
+      />
     );
   }
 
+  const diffCount = steps.filter(
+    (s) => (a.attributes as any)[s.key] !== (b.attributes as any)[s.key]
+  ).length;
   const verdictOf = (gpn: string) => state.results?.find((r) => r.part.gpn === gpn)?.verdict;
   const unknowns = (p: PartRecord) =>
     steps.filter((s) => (p.attributes as any)[s.key] === null).length;
@@ -48,16 +52,18 @@ export function CompareScreen() {
   }
 
   return (
-    <div className="compare">
-      <header className="screen-head">
-        <div>
-          <h2>Side-by-side</h2>
-          <p className="muted">Dots mark rows where the two parts differ.</p>
-        </div>
-        <button className="btn btn-ghost" onClick={back}>Back to results</button>
-      </header>
+    <>
+      <TitleRow
+        title={
+          <>
+            <span className="mono">{a.gpn}</span> and <span className="mono">{b.gpn}</span>
+          </>
+        }
+        sub={`They differ on ${diffCount} of ${steps.length} attributes. A dot marks each difference.`}
+        actions={<button className="btn btn-secondary" onClick={back}>Back to results</button>}
+      />
 
-      <div className="table-wrap card">
+      <div className="table-wrap panel">
         <table className="compare-table">
           <thead>
             <tr>
@@ -97,15 +103,15 @@ export function CompareScreen() {
         {[a, b].map((p) => {
           const n = unknowns(p);
           return (
-            <li key={p.gpn} className="card">
-              <span className="mono">{p.gpn}</span>
+            <li key={p.gpn} className="panel">
+              <span className="mono strong">{p.gpn}</span>
               {n > 0
-                ? ` — ${n} unknown${n === 1 ? '' : 's'}. Needs a manufacturer catalogue page or engineering sign-off to clear.`
-                : ' — fully specified for this family.'}
+                ? `: ${n} unknown${n === 1 ? '' : 's'}. Needs a manufacturer catalogue page or engineering sign-off to clear.`
+                : ': fully specified for this family.'}
             </li>
           );
         })}
       </ul>
-    </div>
+    </>
   );
 }

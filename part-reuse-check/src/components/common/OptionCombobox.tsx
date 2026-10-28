@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, KeyboardEvent } from 'react';
 import type { VocabOption } from '../../types';
+import { Icon } from './Icon';
 
 export interface OptionComboboxProps {
   options: VocabOption[];
@@ -114,10 +115,7 @@ export function OptionCombobox({
   return (
     <div className="combobox">
       <div className="combobox-field">
-        <svg className="combobox-icon" viewBox="0 0 20 20" aria-hidden="true">
-          <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" strokeWidth="1.8" />
-          <path d="M13.5 13.5 L17 17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-        </svg>
+        <span className="combobox-icon"><Icon name="search" /></span>
         <input
           ref={inputRef}
           className="combobox-input"
@@ -164,7 +162,11 @@ export function OptionCombobox({
                 <span className="combobox-label">
                   {o.custom ? <span className="combobox-use">Use</span> : null}
                   {o.label}
-                  {selected ? <span className="combobox-check">✓ current</span> : null}
+                  {selected ? (
+                    <span className="combobox-check">
+                      <Icon name="check" size={14} /> current
+                    </span>
+                  ) : null}
                 </span>
                 {o.custom ? (
                   <span className="combobox-hint">{customHint}</span>

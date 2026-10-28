@@ -82,21 +82,43 @@ Cluster notices are labelled by Google's three rulings:
 Near-match "duplicates" (5.4 vs 5.5 mm) surface through the `near` verdict,
 not as clusters.
 
-## 4. UI refresh
+## 4. UI refresh (tasteskill, achromatic ledger)
 
-- Header with segmented tabs; the prototype marker (NFR-8) is a pill there.
-- Wizard: vertical stepper rail; search box focused on every step, so the
-  whole flow is type → Enter; option counts drawn as bars; a three-part pool
-  meter (states your value / close / doesn't say) replaces the two numbers
-  (FR-7 still satisfied). "Go to review" appears once every step is
-  answered, so editing one answer from Results doesn't force a re-walk.
-- Scope: phases grouped as Active / Early / Retired, with toggle switches.
-- Results: summary stats, preferred-part callout, volume column with bars,
-  tags per row (Preferred, High runner, duplicate type), cleaner expandable
-  detail with a Volume panel.
-- Compare: Lifecycle and Volume rows; dots mark rows where the parts differ.
-- Dead end: nearest misses show volume.
-- Removed the unused `ResultCard.tsx`.
+The front end follows the `design-taste-frontend` skill
+(`.claude/skills/design-taste-frontend`, app-screen rules). Its draw dealt the
+**achromatic-ledger** style (seed 1594108509, sheet in `.taste-skill/`),
+chosen because engineers use this for quick lookups where the figures carry
+the meaning.
+
+- **Shell:** an open-plane sidebar on the page ground. It holds the product's
+  hex-nut mark and name, the scope (fasteners, Oct 2026 snapshot), the nav,
+  the search steps nested under Search (each one editable), and the
+  prototype notice (NFR-8). No top bar.
+- **Colour:** the chrome is ink only, with a near-black primary. The one data
+  hue (`#1d5fbf`) marks order volume and nothing else. Verdicts are small
+  glyph marks and pale pills.
+- **Face:** a steel blue-grey ground (`#f2f4f7`), the hue on volume, and
+  Geist / Geist Mono (Mono for GPNs and MPNs only). The fonts are bundled
+  under `src/styles/fonts` (SIL OFL), so the app still makes no network calls
+  at runtime; the skill's Google Fonts link was not used for that reason.
+- **Search:** title "Find a fastener", one step per card, and a live
+  **shortlist** beside it of the parts that already fit, ranked with their
+  volume and updating with every answer.
+- **Results:** the h1 is the part itself ("M3 × 0.5 × 8 mm pan phillips
+  screw"). The line under it states the finding: how many GPNs fit, and
+  which one is ordered most, with its share. **Copy &lt;GPN&gt;** is the one
+  primary action. Signature element: a **volume-share strip** showing how
+  one spec's volume is spread across GPNs, the consolidation case.
+  Verdict counts are underline tabs (All fits, Match, Close, Needs review,
+  Excluded), which replace the old excluded-records disclosure. Only
+  answered attributes get a column.
+- **Compare, dead end and flag log** share the same title row; nearest misses
+  and flags are plain ruled tables.
+- **Lint:** `node .claude/skills/design-taste-frontend/scripts/lint.mjs --app src`
+  passes with 0 FAILs. Two warnings remain, both deliberate: monospace (GPN
+  and MPN identifiers), and em dashes used as missing-value marks. The skill's
+  browser inspector could not take screenshots in this environment, so the
+  visual checks were done by hand at 1440, 768 and 390 px.
 
 ## 5. Not done in this pass (still open from the feedback doc)
 

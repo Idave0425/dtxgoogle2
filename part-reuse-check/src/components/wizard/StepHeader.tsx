@@ -12,13 +12,14 @@ export function StepHeader({
 }) {
   return (
     <header className="step-header">
-      <div className="step-progress" aria-hidden="true">
-        <span style={{ width: `${total ? ((index + 1) / total) * 100 : 4}%` }} />
+      <div className="step-title-line">
+        <h2 className="step-prompt">{title}</h2>
+        {total ? (
+          <span className="step-count num">
+            {index + 1} of {total}
+          </span>
+        ) : null}
       </div>
-      <div className="step-eyebrow">
-        {total ? `Step ${index + 1} of ${total}` : 'Start here'}
-      </div>
-      <h2 className="step-prompt">{title}</h2>
       {help ? <p className="step-help">{help}</p> : null}
     </header>
   );
